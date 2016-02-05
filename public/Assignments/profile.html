@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Profile</title>
+    <title>Register</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -18,8 +18,11 @@
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,82 +46,81 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Register</a></li>
+                <li><a href="login.html">Login</a></li>
                 <li><a href="#">Username</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
-
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#">Profile<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Admin</a></li>
-                <li><a href="#">Forms</a></li>
+                <li><a href="./home.html">Home</a></li>
+                <li class="active"><a href="./profile.html">Profile</a></li>
+                <li><a href="./admin.html">Admin</a></li>
+                <li><a href="./forms.html">Forms</a></li>
             </ul>
-
-
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Profile</h1>
+        <div class="col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+            <h1>Register</h1>
             <form class="form-horizontal">
 
                 <div class="form-group">
-                    <label for="exampleUsername" class="label-control col-sm-3 col-md-4 text-right">Username</label>
+                    <label for="userName" class="label-control col-sm-3 col-md-4 text-right">Username</label>
                     <div class="col-sm-6 col-md-6">
-                        <input type="text" class="form-control" id="exampleUsername" placeholder="Username">
+                        <input type="text" class="form-control" id="userName" placeholder="Username">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputPassword1" class="col-sm-3 col-md-4 text-right">Password</label>
+                    <label for="inputPassword" class="col-sm-3 col-md-4 text-right">Password</label>
                     <div class="col-sm-6 col-md-6">
-                        <input type="password" class="form-control col-sm-6 col-md-6" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control col-sm-6 col-md-6" id="inputPassword" placeholder="password">
                     </div>
                 </div>
-
-
                 <div class="form-group">
-                    <label for="exampleFirstname" class="label-control col-sm-3 col-md-4 text-right">First Name</label>
+                    <label for="firstName" class="col-sm-3 col-md-4 text-right">First Name</label>
                     <div class="col-sm-6 col-md-6">
-                        <input type="text" class="form-control" id="exampleFirstname" placeholder="First Name">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleLastname" class="label-control col-sm-3 col-md-4 text-right">Last Name</label>
-                    <div class="col-sm-6 col-md-6">
-                        <input type="text" class="form-control" id="exampleLastname" placeholder="Last Name">
+                        <input type="password" class="form-control col-sm-6 col-md-6" id="firstName" placeholder="First Name">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1" class="col-sm-3 col-md-4 text-right">Email</label>
+                    <label for="lastName" class="col-sm-3 col-md-4 text-right">Last Name</label>
                     <div class="col-sm-6 col-md-6">
-                        <input type="email" class="form-control col-sm-6 col-md-6" id="exampleInputEmail1" placeholder="Email">
+                        <input type="password" class="form-control col-sm-6 col-md-6" id="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail1" class="col-sm-3 col-md-4 text-right">Email address</label>
+                    <div class="col-sm-6 col-md-6">
+                        <input type="email" class="form-control col-sm-6 col-md-6" id="inputEmail1" placeholder="Email">
                     </div>
                 </div>
 
                 <div>
                     <div class="col-sm-3 col-md-4"></div>
-                    <button type="submit" class="btn btn-success  col-sm-6  col-md-6">Update</button>
+                    <a href="profile.html" class="btn btn-default  col-sm-6  col-md-6">Update</a>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>

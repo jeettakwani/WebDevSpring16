@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Forms</title>
+    <title>Register</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -19,8 +18,11 @@
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,38 +49,37 @@
                 <li><a href="#">Username</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
-
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Admin</a></li>
-                <li  class="active"><a href="#">Forms<span class="sr-only">(current)</span></a></li>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href="./admin.html">Admin</a></li>
+                <li class="active"><a href="#">Forms</a></li>
             </ul>
-
-
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Forms</h1>
+        <div class="col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+            <h1>Form</h1>
 
             <div>
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active"><a>Forms</a></li>
-                    <li><a>Fields</a></li>
+                    <li><a href="form-fields.html">Fields</a></li>
                 </ul>
             </div>
-            <div>
-                <table class="table table-bordered table-striped table-responsive">
+
+            <div class="table-responsive ">
+                <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Form Name</td>
-                        <td>Action</td>
+
+                        <th><i class="glyphicon glyphicon-triangle-bottom"> FormName</i></th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -104,17 +105,19 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
         </div>
     </div>
 </div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>

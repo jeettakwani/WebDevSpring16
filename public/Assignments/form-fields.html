@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">FORM MAKER</a>
+            <a class="navbar-brand" href="#">Form Maker</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -59,47 +59,176 @@
             <ul class="nav nav-sidebar">
                 <li><a href="./home.html">Home</a></li>
                 <li><a href="./profile.html">Profile</a></li>
-                <li class="active"><a href=#">Admin</a></li>
-                <li><a href="./forms.html">Forms</a></li>
+                <li><a href="./admin.html">Admin</a></li>
+                <li class="active"><a href="#">Forms</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Forms: Registration Form</h1>
             <div>
                 <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a>Forms</a></li> <li><a>Fields</a></li>
+                    <li><a href="forms.html">Forms</a></li>
+                    <li class="active"><a>Fields</a></li>
                 </ul>
             </div>
+
             <div>
-                <table class="table table-bordered table-striped table-responsive">
-                    <thead>
-                    <tr>
-                         <td><i class="glyphicon glyphicon-triangle-bottom"></i> Form Name</td>
-                         <td>Action</td>
-                     </tr>
-                 </thead>
-                    <tbody>
-                    <tr>
-                        <td><input type="text" placeholder="name"></td>
-                        <td><i class="glyphicon glyphicon-plus"></i> <i class="glyphicon glyphicon-ok"></i></td>
-                    </tr>
-                    <tr>
-                            <td>Registration Form</td>
-                            <td><i class="glyphicon glyphicon-remove"></i> <i class="glyphicon glyphicon-pencil"></i></td>
+                <form class="form-horizontal">
 
-                        </tr>
-                    <tr>
-                            <td>Contact Form</td>
-                            <td><i class="glyphicon glyphicon-remove"></i> <i class="glyphicon glyphicon-pencil"></i></td>
+                    <div class="form-group">
+                        <label for="firstName" class="label-control">First Name:</label>
+                        <div class="form-inline">
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                            </div>
+                            <div class="col-xs-offset-1 col-xs-5">
 
-                        </tr>
-                    <tr>
-                            <td>To Do List</td>
-                            <td><i class="glyphicon glyphicon-remove"></i> <i class="glyphicon glyphicon-pencil"></i></td>
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <i class="glyphicon glyphicon-menu-hamburger"></i>
+                            </div>
 
-                        </tr>
-                    </tbody>
-                    </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lasName" class="label-control">Last Name:</label>
+                        <div class="form-inline">
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" id="lasName" placeholder="Last Name">
+                            </div>
+                            <div class="col-xs-offset-1 col-xs-5">
+
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <i class="glyphicon glyphicon-menu-hamburger"></i>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date Of Birth:</label>
+                        <div class="form-inline">
+
+                            <div class="col-xs-6">
+                                <input type="date" class="form-control col-xs-6" id="dateOfBirth" placeholder="Select Date">
+                            </div>
+                            <div class="col-xs-offset-1 col-xs-5">
+
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <i class="glyphicon glyphicon-menu-hamburger"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <div class="form-inline">
+                            <div class="col-xs-6">
+
+                                <select id="gender" class="form-control col-xs-6">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+
+                            </div>
+                            <div class="col-xs-offset-1 col-xs-5">
+
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <i class="glyphicon glyphicon-menu-hamburger"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Roles:</label>
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+
+                        <label>
+                            <input type="checkbox" value="" checked>
+                            Admin
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">
+                            Student
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="" checked>
+                            User
+                        </label>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Licence Agreement:</label>
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </div>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="" checked>
+                            Yes
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="">
+                            No
+                        </label>
+                    </div>
+
+                    <div class="row"></div>
+                    <hr>
+                    <div class="form-group">
+
+                        <label for="addNewField">Add New Field:</label>
+                        <div class="form-inline">
+
+                            <div class=" col-xs-6">
+                                <select id="addNewField" class="form-control">
+                                    <option value="Single Line Text">Single Line Text</option>
+                                    <option value="Text Area">Text Box</option>
+                                    <option value="radio">Radio Button</option>
+                                    <option value="checkbox">Check Box</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-offset-1 col-xs-5">
+
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
             </div>
         </div>
     </div>
