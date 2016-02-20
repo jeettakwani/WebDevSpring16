@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="FormBuilderApp">
-<head>
 
-</head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -17,10 +15,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href=../users/register.html>Register</a></li>
-                <li><a href="../users/login.html">Login</a></li>
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="#/register" ng-class="{'btn-primary' : $location.url() == '/register'}">Register</a></li>
+                <li><a href="#/login" ng-class="{'btn-primary' : $location.url() == '/login'}">Login</a></li>
+                <li><a href="#/profile" class="btn" ng-class="{'btn-primary' : $location.url() == '/profile'}">Profile</a></li>
+                <li><a href="#/admin"   class="btn" ng-class="{'btn-primary' : $location.url() == '/admin'}">Admin</a></li>
             </ul>
         </div>
     </div>
