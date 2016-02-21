@@ -43,17 +43,27 @@
         }
 
         function createUser(user, callback) {
+            _id = (new Date).getTime();
+            user[_id] = _id;
             users.add(user);
             return users;
         }
 
         function deleteUserById(userId, callback) {
 
-
+            for(user in users) {
+                if(user._id == userId)
+                users.splice(user);
+                return users;
+            }
         }
 
         function updateUser(userId, user, callback) {
-
+            for(u in users) {
+                if(u._id == userId)
+                    u = user;
+                return users
+            }
         }
 
     }
