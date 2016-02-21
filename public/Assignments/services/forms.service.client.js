@@ -1,12 +1,16 @@
 /**
+ * Created by jtakwani on 2/21/16.
+ */
+
+/**
  * Created by jtakwani on 2/20/16.
  */
 (function() {
     angular
         .module("FormBuilderApp")
-        .factory("UserService", userService);
+        .factory("FormService", FormService);
 
-    function userService() {
+    function FormService() {
         var users = [
             {	"_id":123, "firstName":"Alice",            "lastName":"Wonderland",
                 "username":"alice",  "password":"alice",   "roles": ["student"]		},
@@ -21,38 +25,34 @@
         ]
 
         var service = {
-            findAllUsers: findAllUsers,
-            findUserByCredentials: findUserByCredentials,
-            createUser: createUser,
-            deleteUserById: deleteUserById,
-            updateUser: updateUser
+            createFormForUser: createFormForUser,
+            findAllFormsForUser: findAllFormsForUser,
+            deleteFormById: deleteFormById,
+            updateFormById: updateFormById
         };
 
         return service;
 
-        function findAllUsers(callback) {
+        function createFormForUser(userId, form, callback) {
             return users;
         }
 
-        function findUserByCredentials(username, password, callback)
+        function findAllFormsForUser(userId, callback)
         {
             for(user in users) {
                 if(user.username == username && user.password == password)
-                return user;
+                    return user;
             }
         }
 
-        function createUser(user, callback) {
+        function deleteFormById(formId, callback)
+        {
             users.add(user);
             return users;
         }
 
-        function deleteUserById(userId, callback) {
+        function updateFormById(formId, newForm, callback) {
 
-
-        }
-
-        function updateUser(userId, user, callback) {
 
         }
 
