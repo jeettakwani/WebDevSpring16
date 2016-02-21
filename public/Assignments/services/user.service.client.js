@@ -18,7 +18,7 @@
                 "username":"dan",    "password":"dan",     "roles": ["faculty", "admin"]},
             {	"_id":567, "firstName":"Edward",           "lastName":"Norton",
                 "username":"ed",     "password":"ed",      "roles": ["student"]		}
-        ]
+        ];
 
         var service = {
             findAllUsers: findAllUsers,
@@ -43,8 +43,6 @@
         }
 
         function createUser(user, callback) {
-            _id = (new Date).getTime();
-            user[_id] = _id;
             users.add(user);
             return users;
         }

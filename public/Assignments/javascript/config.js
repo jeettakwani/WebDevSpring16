@@ -28,6 +28,7 @@
                 })
                 .when("/register", {
                     templateUrl: "views/users/register.html",
+                    Controller: "RegisterController"
 
                 })
                 .when("/login", {
