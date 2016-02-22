@@ -8,22 +8,23 @@
         .config(function($routeProvider){
             $routeProvider
                 .when("/", {
-                    templateUrl:"index.html",
+                    templateUrl:"index.html"
                 })
                 .when("/home", {
-                    templateUrl: "views/home/home.html",
+                    templateUrl: "views/home/home.html"
 
                 })
                 .when("/profile", {
                     templateUrl: "views/users/profile.html",
+                    Controller: "ProfileController"
 
                 })
                 .when("/admin", {
-                    templateUrl: "views/admin/admin.html",
+                    templateUrl: "views/admin/admin.html"
 
                 })
                 .when("/forms", {
-                    templateUrl: "views/forms/forms.html",
+                    templateUrl: "views/forms/forms.html"
 
                 })
                 .when("/register", {
@@ -33,6 +34,7 @@
                 })
                 .when("/login", {
                     templateUrl: "views/users/login.html",
+                    Controller: "LoginController"
 
                 })
                 .otherwise({

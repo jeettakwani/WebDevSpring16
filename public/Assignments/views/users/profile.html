@@ -6,7 +6,7 @@
 
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="ProfileController">
     <div class="row">
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -50,16 +50,16 @@
                 <div class="form-group">
                     <label for="inputEmail1" class="col-sm-3 col-md-4 text-right">Email address</label>
                     <div class="col-sm-6 col-md-6">
-                        <input type="email" class="form-control col-sm-6 col-md-6" id="inputEmail1" placeholder="Email">
+                        <input ng-model="email" class="form-control col-sm-6 col-md-6" id="inputEmail1" placeholder="Email">
                     </div>
                 </div>
 
                 <div>
                     <div class="col-sm-3 col-md-4"></div>
-                    <a href="#/profile"  ng-click="update(username,password,firstname,lastname,email)"
-                       class="btn btn-default  col-sm-6  col-md-6">
+                    <button  ng-click="update(user)"
+                       class="btn btn-primary  col-sm-6  col-md-6">
                         Update
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>
