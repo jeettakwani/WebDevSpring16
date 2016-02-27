@@ -59,7 +59,7 @@
             for(u in users) {
                 if(u._id == userId)
                 {
-                    u = user;
+                    users[user] = user;
                     break;
                 }
 

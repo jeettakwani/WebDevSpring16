@@ -6,7 +6,7 @@
 
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="FormController">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-2 main">
             <h1>Form</h1>
@@ -14,7 +14,7 @@
             <div>
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active"><a>Forms</a></li>
-                    <li><a href="form-fields.html">Fields</a></li>
+                    <li><a href="#/form-fields">Fields</a></li>
                 </ul>
             </div>
 
@@ -26,28 +26,22 @@
                         <th><i class="glyphicon glyphicon-triangle-bottom"> FormName</i></th>
                         <th>Action</th>
                     </tr>
+                    <tr>
+                        <th><input ng-model="title" class="form-control" placeholder="Form Name"/></th>
+                        <th><i ng-click="addForm()"class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-ok"></i></th>
+                    </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><input type="text" placeholder="name"></td>
-                        <td><i class="glyphicon glyphicon-plus"></i> <i class="glyphicon glyphicon-ok"></i></td>
+
+                    <tr ng-repeat="form in forms"
+                        ng-class="{'success' : $index == selectedFormIndex}">
+                        <td>{{form.title}}</td>
+                        <td><i ng-click="updateForm()" class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-pencil"></i></td>
 
                     </tr>
-                    <tr>
-                        <td>Registration Form</td>
-                        <td><i class="glyphicon glyphicon-remove"></i> <i class="glyphicon glyphicon-pencil"></i></td>
 
-                    </tr>
-                    <tr>
-                        <td>Contact Form</td>
-                        <td><i class="glyphicon glyphicon-remove"></i> <i class="glyphicon glyphicon-pencil"></i></td>
-
-                    </tr>
-                    <tr>
-                        <td>To Do List</td>
-                        <td><i class="glyphicon glyphicon-remove"></i> <i class="glyphicon glyphicon-pencil"></i></td>
-
-                    </tr>
                     </tbody>
                 </table>
         </div>

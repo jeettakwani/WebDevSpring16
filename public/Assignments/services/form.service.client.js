@@ -1,22 +1,21 @@
 /**
- * Created by jtakwani on 2/21/16.
- */
-
-/**
  * Created by jtakwani on 2/20/16.
  */
+
 (function() {
+    "use strict";
     angular
         .module("FormBuilderApp")
-        .factory("FormService", FormService);
+        .factory("FormService", formService);
 
-    function FormService() {
+    function formService() {
+        var form, user;
         var forms =
             [
                 {"_id": "000", "title": "Contacts", "userId": 123},
                 {"_id": "010", "title": "ToDo",     "userId": 123},
-                {"_id": "020", "title": "CDs",      "userId": 234},
-            ]
+                {"_id": "020", "title": "CDs",      "userId": 234}
+            ];
 
         function createFormForUser(userId, form, callback) {
             form.userId = userId;
@@ -29,9 +28,9 @@
             var userForms = [];
             for(user in forms) {
                 if(forms[user].userId == userId)
-                    userForms.push(forms[users]);
+                    userForms.push(forms[user]);
             }
-            callback(forms);
+            return (userForms);
         }
 
         function deleteFormById(formId, callback)
@@ -47,7 +46,15 @@
 
         function updateFormById(formId, newForm, callback) {
 
+            for(form in forms) {
+                if(forms[form]._id == formId)
+                {
+                    forms[form] = newForm;
+                    break;
+                }
 
+            }
+            callback(forms);
         }
 
         var service = {
@@ -58,7 +65,5 @@
         };
 
         return service;
-
-
     }
 })();

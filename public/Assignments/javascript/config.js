@@ -24,7 +24,8 @@
 
                 })
                 .when("/forms", {
-                    templateUrl: "views/forms/forms.html"
+                    templateUrl: "views/forms/forms.html",
+                    Controller: "FormController"
 
                 })
                 .when("/register", {
@@ -35,6 +36,11 @@
                 .when("/login", {
                     templateUrl: "views/users/login.html",
                     Controller: "LoginController"
+
+                })
+                .when("/form-fields", {
+                    templateUrl: "views/forms/form-fields.html",
+                    Controller: "FormController"
 
                 })
                 .otherwise({
