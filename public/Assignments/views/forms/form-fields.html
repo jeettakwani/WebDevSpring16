@@ -2,96 +2,102 @@
 <html lang="en" ng-app="FormBuilderApp">
 <head>
 
+    <title>Forms</title>
+
 </head>
 
 <body>
 
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Forms: Registration Form</h1>
+            <h1 class="page-header">Forms</h1>
+
             <div>
                 <ul class="nav nav-tabs nav-justified">
-                    <li><a href="forms.html">Forms</a></li>
-                    <li class="active"><a>Fields</a></li>
+                    <li><a href="#/forms">Forms</a></li>
+                    <li class="active"><a href="#/form-fields">Fields</a></li>
                 </ul>
+
             </div>
 
-            <div>
-                <form class="form-horizontal">
+            <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label for="firstName" class="label-control">First Name:</label>
-                        <div class="form-inline">
-                            <div class="col-xs-6">
-                                <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                            </div>
-                            <div class="col-xs-offset-1 col-xs-5">
+                <div class="form-group">
+                    <label for="exampleFirstname" class="label-control">Firstname:</label>
+                    <div class="form-inline">
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="exampleFirstname" placeholder="Firstname">
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
 
-                                <i class="glyphicon glyphicon-pencil"></i>
-                                <i class="glyphicon glyphicon-plus"></i>
-                                <i class="glyphicon glyphicon-remove"></i>
-                                <i class="glyphicon glyphicon-menu-hamburger"></i>
-                            </div>
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleLastname" class="label-control">Lastname:</label>
+                    <div class="form-inline">
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control " id="exampleLastname" placeholder="Lastname">
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Date Of Birth:</label>
+                    <div class="form-inline">
+
+                        <div class="col-xs-6">
+                            <input type="date" class="form-control col-xs-6" id="exampleInputPassword1" placeholder="dob">
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
 
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <div class="form-inline">
+                        <div class="col-xs-6">
 
-                    <div class="form-group">
-                        <label for="lasName" class="label-control">Last Name:</label>
-                        <div class="form-inline">
-                            <div class="col-xs-6">
-                                <input type="text" class="form-control" id="lasName" placeholder="Last Name">
-                            </div>
-                            <div class="col-xs-offset-1 col-xs-5">
-
-                                <i class="glyphicon glyphicon-pencil"></i>
-                                <i class="glyphicon glyphicon-plus"></i>
-                                <i class="glyphicon glyphicon-remove"></i>
-                                <i class="glyphicon glyphicon-menu-hamburger"></i>
-                            </div>
+                            <select id="gender" class="form-control col-xs-6">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
 
                         </div>
-                    </div>
+                        <div class="col-xs-offset-1 col-xs-5">
 
-                    <div class="form-group">
-                        <label for="dateOfBirth">Date Of Birth:</label>
-                        <div class="form-inline">
-
-                            <div class="col-xs-6">
-                                <input type="date" class="form-control col-xs-6" id="dateOfBirth" placeholder="Select Date">
-                            </div>
-                            <div class="col-xs-offset-1 col-xs-5">
-
-                                <i class="glyphicon glyphicon-pencil"></i>
-                                <i class="glyphicon glyphicon-plus"></i>
-                                <i class="glyphicon glyphicon-remove"></i>
-                                <i class="glyphicon glyphicon-menu-hamburger"></i>
-
-                            </div>
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="gender">Gender:</label>
-                        <div class="form-inline">
-                            <div class="col-xs-6">
+                </div>
 
-                                <select id="gender" class="form-control col-xs-6">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
 
-                            </div>
-                            <div class="col-xs-offset-1 col-xs-5">
-
-                                <i class="glyphicon glyphicon-pencil"></i>
-                                <i class="glyphicon glyphicon-plus"></i>
-                                <i class="glyphicon glyphicon-remove"></i>
-                                <i class="glyphicon glyphicon-menu-hamburger"></i>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="form-group">
                     <div class="row">
                         <div class="col-xs-6">
                             <label>Roles:</label>
@@ -104,30 +110,35 @@
                             <i class="glyphicon glyphicon-menu-hamburger"></i>
                         </div>
                     </div>
+
                     <div class="checkbox">
 
                         <label>
-                            <input type="checkbox" value="" checked>
-                            Admin
+                            <input type="checkbox" checked> Admin
                         </label>
                     </div>
                     <div class="checkbox">
+
                         <label>
-                            <input type="checkbox" value="">
-                            Student
+                            <input type="checkbox"> Student
                         </label>
                     </div>
                     <div class="checkbox">
+
                         <label>
-                            <input type="checkbox" value="" checked>
-                            User
+                            <input type="checkbox" checked> User
                         </label>
                     </div>
 
 
+
+                </div>
+
+                <div class="form-group">
                     <div class="row">
                         <div class="col-xs-6">
-                            <label>Licence Agreement:</label>
+
+                            <label>License Agreement:</label>
                         </div>
                         <div class="col-xs-offset-1 col-xs-5">
 
@@ -137,47 +148,51 @@
                             <i class="glyphicon glyphicon-menu-hamburger"></i>
                         </div>
                     </div>
+
                     <div class="radio">
                         <label>
-                            <input type="radio" value="" checked>
-                            Yes
+                            <input type="radio" checked>Yes
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" value="">
-                            No
+                            <input type="radio">No
                         </label>
                     </div>
 
-                    <div class="row"></div>
-                    <hr>
-                    <div class="form-group">
 
-                        <label for="addNewField">Add New Field:</label>
-                        <div class="form-inline">
+                </div>
 
-                            <div class=" col-xs-6">
-                                <select id="addNewField" class="form-control">
-                                    <option value="Single Line Text">Single Line Text</option>
-                                    <option value="Text Area">Text Box</option>
-                                    <option value="radio">Radio Button</option>
-                                    <option value="checkbox">Check Box</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-offset-1 col-xs-5">
+                <div class="row"></div>
+                <hr>
+                <div class="form-group">
 
-                                <i class="glyphicon glyphicon-plus"></i>
-                            </div>
+                    <label for="exampleAddNewField">Add New Field:</label>
+                    <div class="form-inline">
+
+                        <div class=" col-xs-6">
+                            <select id="exampleAddNewField" class="form-control">
+                                <option value="Single Line Text">Single Line Text</option>
+                                <option value="Text Area">Textbox</option>
+                                <option value="radio">Radio Button</option>
+                                <option value="checkbox">Check Box</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+
+                            <i class="glyphicon glyphicon-plus"></i>
                         </div>
                     </div>
+                </div>
 
 
-                </form>
+
+
             </div>
         </div>
     </div>
 </div>
+
 
 </body>
 </html>
