@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="FormBuilderApp" ng-controller="HeaderController">
+<html lang="en" ng-app="FormBuilderApp">
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -11,21 +11,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.html">Form Maker</a>
+            <a class="navbar-brand" href="#/home">Form Maker</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="HeaderController">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/register" ng-class="{'btn-primary' : $location.url() == '/register'}">
-                    Register
+                <li  ng-class="{'active' : $location.url() === '/register'}"><a href="#/register"  ng-show="rootScope.user==null">Register</a></li>
+                <li ng-class="{'active' : $location.url() === '/login'}"><a href="#/login" ng-show="rootScope.user==null" >Login
                 </a></li>
-                <li><a href="#/login" ng-class="{'btn-primary' : $location.url() == '/login'}">
-                    Login
+                <li ng-class="{'active' : $location.url() === '/profile'}"><a href="#/profile" ng-hide="rootScope.user==null"  >
+                    {{rootScope.user.username}}
                 </a></li>
-                <li><a href="#/profile" class="btn" ng-class="{'btn-primary' : $location.url() == '/profile'}">
-                    Profile
-                </a></li>
-                <li><a href="#/admin"   class="btn" ng-class="{'btn-primary' : $location.url() == '/admin'}">
+                <li ng-class="{'active' : $location.url() === '/admin'}"><a href="#/admin" ng-show="rootScope.user!=null && rootScope.user.roles.indexOf('admin')>=0"  >
                     Admin
+                </a></li>
+                <li class="visible-xs hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.url() === '/forms'}" ng-hide="rootScope.user==null"><a href="#/forms">Forms</a></li>
+                <li><a  ng-hide="rootScope.user==null" ng-click="logout()">
+                    Logout
                 </a></li>
 
             </ul>

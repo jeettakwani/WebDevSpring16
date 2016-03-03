@@ -2,45 +2,46 @@
  * Created by jtakwani on 2/19/16.
  */
 
-(function(){
+(function () {
+    "use strict";
     angular
         .module("FormBuilderApp")
-        .config(function($routeProvider){
+        .config(function ($routeProvider) {
             $routeProvider
                 .when("/", {
-                    templateUrl:"index.html"
+                    templateUrl: "views/home/home.view.html"
                 })
                 .when("/home", {
-                    templateUrl: "views/home/home.html"
+                    templateUrl: "views/home/home.view.html"
 
                 })
                 .when("/profile", {
-                    templateUrl: "views/users/profile.html",
-                    Controller: "ProfileController"
+                    templateUrl: "views/users/profile.view.html",
+                    controller : "ProfileController"
 
                 })
                 .when("/admin", {
-                    templateUrl: "views/admin/admin.html"
+                    templateUrl: "views/admin/admin.view.html"
 
                 })
                 .when("/forms", {
-                    templateUrl: "views/forms/forms.html",
-                    Controller: "FormController"
-
-                })
-                .when("/register", {
-                    templateUrl: "views/users/register.html",
-                    Controller: "RegisterController"
-
-                })
-                .when("/login", {
-                    templateUrl: "views/users/login.html",
-                    Controller: "LoginController"
+                    templateUrl: "views/forms/forms.view.html",
+                    controller : "FormController"
 
                 })
                 .when("/form-fields", {
-                    templateUrl: "views/forms/form-fields.html",
-                    Controller: "FormController"
+                    templateUrl: "views/forms/form-fields.view.html",
+                    controller : "FormController"
+
+                })
+                .when("/register", {
+                    templateUrl: "views/users/register.view.html",
+                    controller : "RegisterController"
+
+                })
+                .when("/login", {
+                    templateUrl: "views/users/login.view.html",
+                    controller : "LoginController"
 
                 })
                 .otherwise({

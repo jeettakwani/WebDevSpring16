@@ -11,7 +11,7 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    function LoginController($scope, $location, UserService) {
+    function LoginController($rootScope,$scope, $location, UserService) {
 
         $scope.hide = true;
         $scope.dispalert = false;
@@ -26,6 +26,7 @@
                 function(response) {
                     if(response) {
                         console.log(response);
+                        $rootScope.user = response;
                         $location.path("/profile");
                     }
                     else {
