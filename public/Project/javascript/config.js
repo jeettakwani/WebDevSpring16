@@ -44,6 +44,14 @@
                     controller : "LoginController"
 
                 })
+                .when("/pricing", {
+                    templateUrl: "views/users/pricing.view.html",
+                    controller : "RegisterController"
+                })
+                .when("/complete", {
+                    templateUrl: "views/users/complete.view.html",
+                    controller : "RegisterController"
+                })
                 .otherwise({
                     redirectTo: "/"
                 });

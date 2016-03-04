@@ -11,6 +11,7 @@
     function RegisterController($rootScope, $scope, $location, UserService) {
 
         $scope.users = {}
+        $scope.$location = $location;
         UserService.findAllUsers(function(response){
             "use strict";
             $scope.users = response;
@@ -36,8 +37,16 @@
                     console.log(response);
                 });
 
-            $location.path("/profile");
+            $location.path("/complete");
         };
+
+        $scope.goToPayment = function() {
+            $scope.$location.path("/pricing")
+        }
+
+        $scope.select = function() {
+            $scope.$location.path("/profile")
+        }
 
 
     }
