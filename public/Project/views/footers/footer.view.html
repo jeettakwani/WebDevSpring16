@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="GameRental">
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div id="navbar" class="navbar-footer" ng-controller="HeaderController">
+            <ul class="nav navbar-nav">
+                <li  ng-class="{'active' : $location.url() === '/register'}">
+                    <a href="#/about">
+                        About</a>
+                </li>
+
+                <li ng-class="{'active' : $location.url() === '/login'}">
+                    <a href="#/login">
+                        Pricing
+                    </a></li>
+
+                <li ng-class="{'active' : $location.url() === '/admin'}">
+                    <a href="#/admin" ng-show="rootScope.user!=null && rootScope.user.roles.indexOf('admin')>=0">
+                        Admin
+                    </a></li>
+
+                <li class="visible-xs hidden-sm hidden-md hidden-lg"
+                    ng-class="{'active': $location.url() === '/forms'}"
+                    ng-hide="rootScope.user==null">
+                    <a href="#/forms">
+                    Terms
+                    </a>
+                </li>
+                <li><a  href='#/help'>
+                    Help
+                </a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

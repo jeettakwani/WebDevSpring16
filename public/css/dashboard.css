@@ -23,6 +23,12 @@ body {
  */
 .navbar-fixed-top {
     border: 0;
+    background-color: transparent;
+}
+
+.navbar-fixed-bottom {
+    border: 0;
+    background-color: transparent;
 }
 
 /*
@@ -103,4 +109,23 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+.login {
+    margin-top: 10px;
+}
 
+.container-login {
+    margin-top: 10px;
+}
+
+.login-fb{
+
+    margin-top : 10px;
+}
+
+.container-image {
+    margin-top: 100px;
+    margin-left: 10px;
+    height: 400px;
+    width: 600px;
+    content: url("../Project/images/fifa-16-global-cover-ps3.jpg");
+}
