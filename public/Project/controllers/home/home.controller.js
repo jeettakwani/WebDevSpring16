@@ -9,9 +9,9 @@
 
     angular
         .module("GameRental")
-        .controller("LoginController", LoginController);
+        .controller("HomeController", HomeController);
 
-    function LoginController($rootScope,$scope, $location, UserService) {
+    function HomeController($rootScope,$scope, $location, UserService) {
 
         $scope.hide = true;
         $scope.dispalert = false;

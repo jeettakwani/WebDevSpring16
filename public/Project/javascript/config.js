@@ -8,7 +8,8 @@
         .config(function ($routeProvider) {
             $routeProvider
                 .when("/", {
-                    templateUrl: "index.html"
+                    templateUrl: "views/home/home.view.html",
+                    controller: "HomeController"
                 })
                 .when("/home", {
                     templateUrl: "views/home/home.view.html"
