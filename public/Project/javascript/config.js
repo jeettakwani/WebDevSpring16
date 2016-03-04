@@ -52,6 +52,22 @@
                     templateUrl: "views/users/complete.view.html",
                     controller : "RegisterController"
                 })
+                .when("/search", {
+                    templateUrl: "views/search/search.view.html",
+                    controller: "SearchController"
+                })
+                .when("/help", {
+                    templateUrl: "views/siteInfo/help.view.html"
+                })
+                .when("/about", {
+                    templateUrl: "views/siteInfo/about.view.html"
+                })
+                .when("/features", {
+                    templateUrl: "views/siteInfo/features.view.html"
+                })
+                .when("/mygames", {
+                    templateUrl: "views/games/mygames.view.html"
+                })
                 .otherwise({
                     redirectTo: "/"
                 });

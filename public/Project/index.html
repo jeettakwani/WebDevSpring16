@@ -37,8 +37,10 @@
     <script src="controllers/users/register.controller.js"></script>
     <script src="services/user.services.client.js"></script>
     <!--
-   <script src="services/user.service.client.js"></script>
+   <script src="services/user.service.client.js"></script>-->
+
    <script src="controllers/users/profile.controller.js"></script>
+    <!--
    <script src="controllers/users/login.controller.js"></script>
 
    <script src="controllers/sidebar/sidebar.contoller.js"></script>
@@ -48,6 +50,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+    <link href="/css/sticky-footer-navbar.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -62,9 +65,6 @@
 
 <body ng-controller="MainController">
 <div ng-view></div>
-<div class="container" ng-include="'views/headers/header.view.html'"></div>
-
-<div class="container" ng-include="'views/footers/footer.view.html'"></div>
-
+<div  ng-include="'views/headers/header.view.html'"></div>
 </body>
 </html>

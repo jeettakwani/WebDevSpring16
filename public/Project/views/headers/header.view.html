@@ -14,12 +14,14 @@
             <a class="navbar-brand" href="#/home">Game Rental</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" ng-controller="HeaderController">
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+
             <ul class="nav navbar-nav navbar-right">
-                <li  ng-class="{'active' : $location.url() === '/register'}">
-                    <a href="#/register"  ng-show="rootScope.user==null">
+                <li  ng-class="{'active' : $location.url() === '/search'}">
+                    <a href="#/search">
+                        <i class="glyphicon glyphicon-search"></i> </a>
+                </li>
+                <li  ng-class="{'active' : $location.url() === '/features'}">
+                    <a href="#/features"  ng-show="rootScope.user==null">
                         Features</a>
                 </li>
 

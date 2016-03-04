@@ -27,7 +27,7 @@
                     if(response) {
                         console.log(response);
                         $rootScope.user = response;
-                        $location.path("/profile");
+                        $location.path("/search");
                     }
                     else {
                         $scope.dispalert = true;

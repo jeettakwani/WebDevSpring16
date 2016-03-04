@@ -3,16 +3,15 @@
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div id="navbar" class="navbar-footer" ng-controller="HeaderController">
+        <div id="navbar" ng-controller="HeaderController">
             <ul class="nav navbar-nav">
                 <li  ng-class="{'active' : $location.url() === '/register'}">
                     <a href="#/about">
                         About</a>
                 </li>
 
-                <li ng-class="{'active' : $location.url() === '/login'}">
-                    <a href="#/login">
+                <li ng-class="{'active' : $location.url() === '/pricing'}" ng-show="rootScope.user==null">
+                    <a href="#/pricing">
                         Pricing
                     </a></li>
 
@@ -34,7 +33,6 @@
 
             </ul>
         </div>
-    </div>
 </nav>
 </body>
 </html>
