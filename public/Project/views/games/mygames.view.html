@@ -5,46 +5,47 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="GameController">
     <div class="row">
         <div class="container">
             <h1 class="page-header">Wish List</h1>
 
 
-                <table class="table table-bordered table-striped table-responsive">
-                    <thead>
-                    <tr>
-                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Name</td>
-                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Platform</td>
-                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Year</td>
-                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Ratings</td>
-                    </tr>
-                    </thead>
-                    <tbody>
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Name</td>
+                    <td>Action</td>
+                </tr>
+                </thead>
+                <tbody>
 
-                    <tr>
-                        <td>Fifa 16</td>
-                        <td>Ps4</td>
-                        <td>2016</td>
-                        <td>3.5</td>
-                    </tr>
+                <tr>
+                    <td><input ng-model="gameName" type="text" placeholder="Game"></td>
 
-                    <tr>
-                        <td>Fifa 15</td>
-                        <td>Ps3</td>
-                        <td>2015</td>
-                        <td>4.5</td>
-                    </tr>
+                    <td>
+                        <button class="btn btn-primary" ng-click="addGame()">
+                            Add
+                        </button>
 
-                    <tr>
-                        <td>Fifa 14</td>
-                        <td>PC</td>
-                        <td>2014</td>
-                        <td>3.8</td>
-                    </tr>
+                        <button class="btn btn-info" ng-click="update()">
+                            Update
+                        </button>
+                    </td>
 
-                    </tbody>
-                </table>
+                </tr>
+                <tr ng-repeat="game in games">
+                    <td>{{game.title}}</td>
+                    <td>
+                        <button ng-click="removeGame($index)" class="btn btn-danger">Remove</button>
+
+                        <button ng-click="selectGame($index)" class="btn btn-info">Select</button>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
             </div>
 
     </div>

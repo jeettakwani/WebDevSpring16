@@ -70,7 +70,8 @@
                     templateUrl: "views/siteInfo/features.view.html"
                 })
                 .when("/mygames", {
-                    templateUrl: "views/games/mygames.view.html"
+                    templateUrl: "views/games/mygames.view.html",
+                    controller: "GameController"
                 })
                 .otherwise({
                     redirectTo: "/"
