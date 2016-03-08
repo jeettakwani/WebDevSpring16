@@ -16,9 +16,9 @@
         }
 
         function search(gameName) {
-            $location.url("/search/" + $scope.gameName);
+            //$location.url("/search/" + $scope.gameName);
             console.log(gameName);
-            MovieService.findGameByTitle(
+            GameService.findGameByTitle(
                 gameName,
                 function (response) {
                     console.log(response);

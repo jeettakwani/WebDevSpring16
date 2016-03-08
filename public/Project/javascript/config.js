@@ -56,6 +56,10 @@
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController"
                 })
+                .when("/detail/:id", {
+                    templateUrl: "views/search/details.view.html",
+                    controller: "DetailController"
+                })
                 .when("/help", {
                     templateUrl: "views/siteInfo/help.view.html"
                 })

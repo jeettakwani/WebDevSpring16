@@ -5,24 +5,25 @@
     <title>Details</title>
 </head>
 <body>
-<div class="container-fluid">
-    <h2>{{movie.Title}}</h2>
+<div class="container-fluid" ng-controller="DetailController">
+    <h2>{{game.results.name}}</h2>
 
-    <img ng-src="{{movie.Poster}}" height="300px" class="pull-left"/>
+    <img ng-src="{{game.results.image.icon_url}}" height="300px" class="pull-left"/>
 
     <p>
-        {{movie.Plot}}
+        {{game.results.description}}
     </p>
 
-    <h3>Actors</h3>
+    <h3>Platforms</h3>
 
     <ul>
-        <li ng-repeat="actorName in movie.Actors.split(',')">
-            {{actorName}}
+        <li ng-repeat="plat in game.results.platforms">
+            {{plat.abbreviation}}
         </li>
     </ul>
 
-    {{movie}}
+    <a href="#/reviews" button class="btn btn-info"
+
 </div>
 </body>
 </html>

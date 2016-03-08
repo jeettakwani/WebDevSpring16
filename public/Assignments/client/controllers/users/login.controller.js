@@ -11,14 +11,13 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    function LoginController($rootScope,$scope, $location, UserService) {
+    function LoginController($rootScope,$scope, $location, UserService,$http) {
 
         $scope.hide = true;
         $scope.dispalert = false;
 
 
         $scope.login = function() {
-
 
             //$rootScope.user = $scope.user;
 

@@ -3,13 +3,14 @@
 
 <body>
 <div class>
-<div class="container-login col-md-6" ng-controller="HomeController">
+<div class="container-login col-sm-6 col-md-6" ng-controller="HomeController">
     <h1 class="page-header">Login</h1>
-        <div class="row col-md-offset-1">
-            <form class="form-horizontal login">
+        <div class="row col-sm-12 col-md-offset-1">
+
+            <form class="form-horizontal col-sm-12 login">
 
                 <div class="form-group">
-                    <label for="userName" class="label-control col-sm-3 col-md-2">Username</label>
+                    <label for="userName" class="label-control col-sm-6 col-md-2">Username</label>
 
                     <div class="col-sm-6 col-md-6">
                         <input ng-model="username" type="text" class="form-control"
@@ -21,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPassword" class="col-sm-3 col-md-2">Password</label>
+                    <label for="inputPassword" class="col-sm-6 col-md-2">Password</label>
 
                     <div class="col-sm-6 ">
                         <input ng-model="password" type="password" class="form-control"
@@ -32,7 +33,7 @@
                 </div>
 
                 <div class="col-md-offset-2">
-                    <div class="col-sm-3 col-md-7">
+                    <div class="col-sm-6 col-md-7">
                         <a href="#/forgotpassword">Forgot Password</a> |
                         <a href="#/forgotpassword">Forgot Username</a>
 
@@ -51,7 +52,7 @@
         </div>
 
 </div>
-    <div class="container-image col-md-offset-1 col-md-5">
+    <div class="container-image col-md-offset-1 col-md-5 hidden-sm hidden-xs">
     </div>
 
 </div>

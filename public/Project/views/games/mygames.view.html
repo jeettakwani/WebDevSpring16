@@ -7,37 +7,40 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-
+        <div class="container">
             <h1 class="page-header">Wish List</h1>
 
-            <div>
-                <ul class="nav nav-tabs nav-justified">
-                    <li><a href="#/mygames">PC</a></li>
-                    <li><a href="#/mygames">Ps4</a></li>
-                    <li><a href="#/mygames">Xbox-One</a></li>
-                    <li><a href="#/mygames">Ps3</a></li>
-                </ul>
-            </div>
-            <div>
+
                 <table class="table table-bordered table-striped table-responsive">
                     <thead>
                     <tr>
-                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Form Name</td>
-                        <td>Action</td>
+                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Name</td>
+                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Platform</td>
+                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Game Year</td>
+                        <td><i class="glyphicon glyphicon-triangle-bottom"></i> Ratings</td>
                     </tr>
                     </thead>
                     <tbody>
 
                     <tr>
-                        <td><input ng-model="formName" type="text" placeholder="name"></td>
-                        <td><i ng-click="addForm()" class="glyphicon glyphicon-plus"></i> <i ng-click="updateForm()" class="glyphicon glyphicon-ok"></i></td>
-
+                        <td>Fifa 16</td>
+                        <td>Ps4</td>
+                        <td>2016</td>
+                        <td>3.5</td>
                     </tr>
-                    <tr ng-repeat="form in forms">
-                        <td>{{form.title}}</td>
-                        <td><i ng-click="deleteForm($index)" class="glyphicon glyphicon-remove"></i>
-                            <i ng-click="selectForm($index)" class="glyphicon glyphicon-pencil"></i></td>
 
+                    <tr>
+                        <td>Fifa 15</td>
+                        <td>Ps3</td>
+                        <td>2015</td>
+                        <td>4.5</td>
+                    </tr>
+
+                    <tr>
+                        <td>Fifa 14</td>
+                        <td>PC</td>
+                        <td>2014</td>
+                        <td>3.8</td>
                     </tr>
 
                     </tbody>
