@@ -95,7 +95,7 @@
                 }
 
             }
-            callback(game);
+            callback(games);
         }
 
     }

@@ -72,7 +72,7 @@
 
             GameService.deleteGameById($scope.games[index]._id, function (response) {
                 GameService.findAllGamesForUser($scope.rootScope.user._id,function(response){
-                    $scope.gamrs = response;
+                    $scope.games = response;
                 });
             });
         };
