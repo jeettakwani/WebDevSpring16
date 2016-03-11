@@ -5,15 +5,12 @@
     <title>Details</title>
 </head>
 <body>
-<div class="container-fluid" ng-controller="DetailController">
+<div class="container-fluid col-md-12" ng-controller="DetailController">
     <h2>{{game.results.name}}</h2>
 
-    <img ng-src="{{game.results.image.icon_url}}" height="300px" class="pull-left"/>
+    <img ng-src="{{game.results.image.icon_url}}" height="250px" class="pull-left col-md-3"/>
 
-    <p>
-        {{game.results.description}}
-    </p>
-
+    <div class="containe col-md-1">
     <h3>Platforms</h3>
 
     <ul>
@@ -21,9 +18,27 @@
             {{plat.abbreviation}}
         </li>
     </ul>
+    </div>
+    <div class="col-md-offset-5 col-md-2">
 
-    <a href="#/reviews" button class="btn btn-info btn-block">Add Review</a>
+        <button class="btn btn-info btn-block ">Add Review</button>
 
+        <a href="#/mygames" button class="btn btn-info btn-block ">Save</a>
+
+        <button
+           ng-show="rootScope.user!=null && rootScope.user.roles.indexOf('admin')>=0"
+           class="btn btn-info btn-block ">
+            Rent
+        </button>
+    </div>
+</div>
+
+<div class="container-fluid" ng-bind-html="NewDetails">
+    <div class="container-fluid" ng-bind-html="NewDetails">
+    <p>
+        {{game.results.description}}
+    </p>
+    </div>
 </div>
 </body>
 </html>

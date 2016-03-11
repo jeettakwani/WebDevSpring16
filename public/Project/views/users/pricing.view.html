@@ -1,75 +1,78 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="GameRental">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pricing</title>
+
 </head>
+
 <body>
-<div class="container-fluid" ng-controller="RegisterController">
-    <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Pricing</h1>
+<!-- Pricing Table Section -->
+<section id="pricing-table">
+    <div class="container" ng-controller="RegisterController">
+        <div class="row">
+            <div class="pricing">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <p class="pricing-title">Free Plan</p>
+                            <p class="pricing-rate"><sup>$</sup> 0 <span>/Mo.</span></p>
+                            <button class="btn btn-primary" ng-click="register()">Get Started</button>
+                        </div>
 
-            <div>
-                <table class="table table-bordered table-striped table-responsive">
-                    <thead>
-                    <tr>
-                        <td>Features</td>
-                        <td>Free</td>
-                        <td>Regular</td>
-                        <td>Premium</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Search Games</td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Read Reviews and watch Videos</td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Rent Games</td>
-                        <td><i class="glyphicon glyphicon-remove"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Buy Games</td>
-                        <td><i class="glyphicon glyphicon-remove"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Ear Coins</td>
-                        <td><i class="glyphicon glyphicon-remove"></i></td>
-                        <td><i class="glyphicon glyphicon-remove"></i></td>
-                        <td><i class="glyphicon glyphicon-ok"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td>$0.00</td>
-                        <td>$5.00/mo</td>
-                        <td>$10.00/mo</td>
-                    </tr>
-                    <tr>
-                        <td>Select</td>
-                        <td><i ng-click="register()" class="glyphicon glyphicon-ok"></i></td>
-                        <td><i ng-click="register()" class="glyphicon glyphicon-ok"></i></td>
-                        <td><i ng-click="register()" class="glyphicon glyphicon-ok"></i></td>
+                        <div class="pricing-list">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i>Search Any Game</li>
+                                <li><i class="fa fa-signal"></i><span>Rent 1</span> Game</li>
+                                <li><i class="fa fa-user"></i><span>Buy 1</span> Game</li>
+                                <li><i class="fa fa-user"></i><span>No</span> Points</li>
+                                <li><i class="fa fa-smile-o"></i><span>First Rent Game On Us</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                    </tr>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <p class="pricing-title">Business Plan</p>
+                            <p class="pricing-rate"><sup>$</sup> 5 <span>/Mo.</span></p>
+                            <button class="btn btn-primary" ng-click="register()">And Get Free Month</button>
+                        </div>
 
-                    </tbody>
-                </table>
+                        <div class="pricing-list">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i>Search Any Game</li>
+                                <li><i class="fa fa-signal"></i><span>Rent 1</span> Game /Mo.</li>
+                                <li><i class="fa fa-user"></i><span>Sell/Buy 1</span> Game /Mo.</li>
+                                <li><i class="fa fa-user"></i><span>Earn</span> Points</li>
+                                <li><i class="fa fa-smile-o"></i>First Rent Game On Us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <p class="pricing-title">Extended Plan</p>
+                            <p class="pricing-rate"><sup>$</sup> 80 <span>/Mo.</span></p>
+                            <button class="btn btn-primary" ng-click="register()">And Get Free Month</button>
+                        </div>
+
+                        <div class="pricing-list">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i>Search Any Game</li>
+                                <li><i class="fa fa-signal"></i><span> Rent unlimited</span> Games</li>
+                                <li><i class="fa fa-user"></i><span>Buy/Sell unlimited</span> Games</li>
+                                <li><i class="fa fa-user"></i><span>Earn</span> Points</li>
+                                <li><i class="fa fa-smile-o"></i>First Rent Game On Us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+<!-- Pricing Table Section End -->
 </body>
 </html>

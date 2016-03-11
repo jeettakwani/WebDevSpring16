@@ -7,7 +7,9 @@
         .module("GameRental")
         .controller("DetailController", detailController);
 
-    function detailController($scope, $routeParams, GameService) {
+    function detailController($scope,$rootScope, $routeParams, GameService,$sce) {
+        //var NewDetails;
+        $scope.rootScope = $rootScope;
         $scope.gameId = $routeParams.id;
 
         GameService.findGameByID(
@@ -15,7 +17,9 @@
             function(response) {
                 console.log(response);
                 $scope.game = response;
+                $scope.NewDetails=$sce.trustAsHtml($scope.game.results.description);
             }
-        )
+        );
+
     }
 })();
