@@ -1,7 +1,8 @@
 /**
  * Created by jtakwani on 3/6/16.
  */
-var users = require('./user.users.json');
+
+var users = require('./user.mock.json');
 
 module.exports = function() {
     var api = {
@@ -55,7 +56,7 @@ module.exports = function() {
     function findUserByUsername(username) {
         for (var u in users) {
             if(users[u].username === username) {
-                return user
+                return user;
             }
         }
 
@@ -63,9 +64,11 @@ module.exports = function() {
 
     function findUserByCredentials(credentials) {
         for (var u in users) {
-            if(users[u].username === username) {
-                return user
+            if(users[u].username === credentials.username &&
+                users[u].password === credentials.password) {
+                return user;
             }
         }
+        return null;
     }
 };

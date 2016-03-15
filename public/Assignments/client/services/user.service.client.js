@@ -1,7 +1,7 @@
 /**
  * Created by jtakwani on 2/20/16.
  */
-(function() {
+(function () {
     "use strict";
     angular
         .module("FormBuilderApp")
@@ -21,10 +21,7 @@
         return service;
 
         function findAllUsers() {
-            $http.get('/api/users')
-                .success(function(response) {
-                    return response;
-                });
+            return $http.get('/api/users')
         }
 
         function findUserByCredentials(username, password) {
@@ -33,23 +30,23 @@
                 password: password
             };
 
-            $http.get('/api/user/',credentials)
-                .success(function(response) {
-                   return response
+            $http.get('/api/user/', credentials)
+                .success(function (response) {
+                    return response
                 });
         }
 
         function createUser(user) {
             $http.post('/api/user', user)
-                .success(function(response) {
+                .success(function (response) {
                     return response;
                 });
         }
 
         function deleteUserById(userId) {
             $http.delete('/api/user', userId)
-                .success(function(response) {
-                   return response
+                .success(function (response) {
+                    return response
                 });
 
         }
@@ -61,14 +58,14 @@
             };
 
             $http.put('/api/user', data)
-                .success(function(response) {
-                   return response;
+                .success(function (response) {
+                    return response;
                 });
         }
 
         function findUserByUsername(username) {
-            $http.get('',username)
-                .success(function(response) {
+            $http.get('', username)
+                .success(function (response) {
                     return response;
                 });
         }
