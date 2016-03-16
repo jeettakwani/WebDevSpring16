@@ -21,7 +21,7 @@
         return service;
 
         function findAllUsers() {
-            return $http.get('/api/users')
+            return $http.get('/api/assignment/user');
         }
 
         function findUserByCredentials(username, password) {

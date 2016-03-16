@@ -18,7 +18,7 @@ module.exports = function() {
 
     function createUser(user) {
         users.push(user);
-        return users;
+        return user;
     }
 
     function findAllUsers() {
@@ -26,8 +26,8 @@ module.exports = function() {
     }
 
     function findUserById(userId) {
-        for (var i in users) {
-            if(users[user]._id === userId)
+        for (var user in users) {
+            if(users[user]._id == userId)
             return users[user]
         }
         return null
@@ -35,7 +35,7 @@ module.exports = function() {
 
     function updateUser(userId, user) {
         for (var u in users) {
-            if(users[u]._id === userId) {
+            if(users[u]._id == userId) {
                 user[u] = user;
                 return users
             }
@@ -45,7 +45,7 @@ module.exports = function() {
 
     function deleteUser(userId) {
         for (var u in users) {
-            if (users[u]._id === userId) {
+            if (users[u]._id == userId) {
                 users.splice(u, 1);
                 return true;
             }
@@ -55,7 +55,7 @@ module.exports = function() {
 
     function findUserByUsername(username) {
         for (var u in users) {
-            if(users[u].username === username) {
+            if(users[u].username == username) {
                 return user;
             }
         }
@@ -64,8 +64,8 @@ module.exports = function() {
 
     function findUserByCredentials(credentials) {
         for (var u in users) {
-            if(users[u].username === credentials.username &&
-                users[u].password === credentials.password) {
+            if(users[u].username == credentials.username &&
+                users[u].password == credentials.password) {
                 return user;
             }
         }
