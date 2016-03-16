@@ -59,6 +59,7 @@ module.exports = function() {
                 return user;
             }
         }
+        return null;
 
     }
 

@@ -18,7 +18,7 @@ module.exports = function(app, model){
             res.send(200);
             return;
         }
-        res.json({massage:"User not created"});
+        res.json({message:"User not created"});
     }
 
     function getAllUsers(req, res) {

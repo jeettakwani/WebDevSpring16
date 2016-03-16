@@ -16,10 +16,19 @@ module.exports = function () {
         findAllFormsForUser: findAllFormsForUser,
         deleteFormById: deleteFormById,
         updateFormById: updateFormById,
-
+        getFormById: getFormById
     };
 
     return service;
+
+    function getFormById(id) {
+        for (f in forms) {
+            if (forms[f]._id === id) {
+                return forms[f];
+            }
+        }
+        return null;
+    }
 
     function createFormForUser(userId, form) {
         form.userId = userId;
@@ -30,7 +39,7 @@ module.exports = function () {
     function findAllFormsForUser(userId) {
         var userForms = [];
         for (f in forms) {
-            if (forms[f].userId === userId) {
+            if (forms[f].userId == userId) {
                 userForms.push(forms[f]);
             }
         }
