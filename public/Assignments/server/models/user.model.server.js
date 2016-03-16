@@ -54,9 +54,10 @@ module.exports = function() {
     }
 
     function findUserByUsername(username) {
+        console.log(username);
         for (var u in users) {
             if(users[u].username == username) {
-                return user;
+                return users[u];
             }
         }
         return null;
@@ -67,7 +68,7 @@ module.exports = function() {
         for (var u in users) {
             if(users[u].username == credentials.username &&
                 users[u].password == credentials.password) {
-                return user;
+                return users[u];
             }
         }
         return null;

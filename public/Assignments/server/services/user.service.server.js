@@ -4,9 +4,9 @@
 module.exports = function(app, model){
 
     app.post('/api/assignment/user',createUser);
-    app.get('/api/assignment/user',getAllUsers);
+    app.get('/api/assignment/user',getUsers);
     app.get('/api/assignment/user/:id',getUserById);
-    app.get('/api/assignment/user?username=username', getUserByUsername);
+    //app.get('/api/assignment/user', getUserByUsername);
     //app.get('/api/assignment/user?username=username&password=password',findUserByCredentials);
     app.put('/api/assignment/user/:id',updateUser);
     app.delete('/api/assignment/user/:id',deleteUser);
@@ -21,9 +21,21 @@ module.exports = function(app, model){
         res.json({message:"User not created"});
     }
 
-    function getAllUsers(req, res) {
-        var users = model.findAllUsers();
-        res.json(users);
+    function getUsers(req, res) {
+        if(Object.keys(req.query).length === 1) {
+            var username = req.query.username;
+            res.json(getUserByUsername(username));
+        }
+        else if(Object.keys(req.query).length === 2) {
+            var username = req.query.username;
+            var password = req.query.password;
+            res.json(getUserByCredentials(username,password));
+            return;
+        }
+        else {
+            var users = model.findAllUsers();
+            res.json(users);
+        }
     }
 
     function getUserById(req, res) {
@@ -36,14 +48,27 @@ module.exports = function(app, model){
         res.json({message: "User not found"});
     }
 
-    function getUserByUsername(req, res) {
-        var username = req.query.username;
+    function getUserByUsername(username) {
         var user = model.findUserByUsername(username);
+        console.log(user);
         if(user) {
-            res.json(user);
-            return;
+            return user;
         }
-        res.json({message: "User Not found"});
+        return {message: "User Not found"};
+    }
+
+    function getUserByCredentials(username,password) {
+        var credentials = {
+            username: username,
+            password: password
+        };
+
+        var user = model.findUserByCredentials(credentials);
+        console.log(user);
+        if(user) {
+            return user;
+        }
+        return {message: "User Not found"};
     }
 
     function updateUser(req, res) {
