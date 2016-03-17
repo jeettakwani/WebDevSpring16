@@ -4,26 +4,26 @@
 
 module.exports = function(app, model){
 
-    app.post('/api/assignment/form/:formId/field',createFormField);
-    app.get('/api/assignment/form/:formId/field',getFormField);
-    app.get('/api/assignment/form/:formId/field/:fieldId',getFormById);
-    app.put('/api/assignment/form/:formId/field/:fieldId',updateForm);
-    app.delete('/api/assignment/form/:formId/field/:fieldId',deleteForm);
+    app.post('/api/assignment/form/:formId/field',createFieldForForm);
+    app.get('/api/assignment/form/:formId/field',getFieldsForForm);
+    app.get('/api/assignment/form/:formId/field/:fieldId',getFieldForForm);
+    app.put('/api/assignment/form/:formId/field/:fieldId',updateField);
+    app.delete('/api/assignment/form/:formId/field/:fieldId',deleteFieldFromForm);
 
-    function createFormField(req, res) {
+    function createFieldForForm(req, res) {
         var formId = req.params.formId;
-        var form = req.body;
-        form = model.createFormForUser(userId, form);
-        if(form) {
+        var field = req.body;
+        field = model.createFieldForForm(formId, field);
+        if(field) {
             res.send(200);
             return;
         }
-        res.json({message:"form not created"});
+        res.json({message:"field not created"});
     }
 
-    function getFormField(req, res) {
+    function getFieldsForForm(req, res) {
         var formId = req.params.formId;
-        var fields = model.findAllFormsForUser(userId);
+        var fields = model.findFieldsForForm(formId);
 
         if(fields) {
             res.json(fields);
@@ -31,9 +31,12 @@ module.exports = function(app, model){
         }
         res.json({message:"fields not found"});
     }
-    function getFormById(req, res) {
-        var id = req.params.formId;
-        var form = model.getFormById(id);
+
+    function getFieldForForm(req, res) {
+        var formId = req.params.formId;
+        var fieldId = req.params.fieldId;
+
+        var form = model.findFieldForForm(formId, fieldId);
         if(form) {
             res.json(form);
             return;
@@ -42,11 +45,12 @@ module.exports = function(app, model){
     }
 
 
-    function updateForm(req, res) {
-        var id = req.params.formId;
-        var form = req.body;
+    function updateField(req, res) {
+        var formId = req.params.formId;
+        var fieldId = req.params.fieldId;
+        var field = req.body
 
-        var form = model.updateFormById(form);
+        var form = model.updateFields(formId, fieldId, field);
         if(form) {
             res.send(200);
             return;
@@ -54,10 +58,11 @@ module.exports = function(app, model){
         res.send(404);
     }
 
-    function deleteForm(req, res) {
-        var id = req.params.formId;
+    function deleteFieldFromForm(req, res) {
+        var formId = req.params.formId;
+        var fieldId = req.params.fieldId;
 
-        if(model.deleteFormById(id)) {
+        if(model.deleteFieldFromForm(formId, fieldId)) {
             res.send(200);
             return;
         }
