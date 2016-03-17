@@ -24,50 +24,27 @@
             return $http.get('/api/assignment/user');
         }
 
-        function findUserByCredentials(username, password) {
-            var credentials = {
-                username: username,
-                password: password
-            };
-
-            $http.get('/api/user/', credentials)
-                .success(function (response) {
-                    return response
-                });
-        }
-
         function createUser(user) {
-            $http.post('/api/user', user)
-                .success(function (response) {
-                    return response;
-                });
+            return $http.post('/api/assignment/user', user);
         }
 
         function deleteUserById(userId) {
-            $http.delete('/api/user', userId)
-                .success(function (response) {
-                    return response
-                });
-
+            return $http.delete('/api/assignment/user' + userId);
         }
 
         function updateUser(userId, user) {
-            var data = {
-                userId: userId,
-                user: user
-            };
-
-            $http.put('/api/user', data)
-                .success(function (response) {
-                    return response;
-                });
+            return $http.put('/api/assignment/user'+ userId, user);
         }
 
+        function findUserByCredentials(username, password) {
+
+            $http.get('/api/assignment/user?username'+ username
+                +'&password=' + password);
+        }
+
+
         function findUserByUsername(username) {
-            $http.get('', username)
-                .success(function (response) {
-                    return response;
-                });
+            return $http.get('/api/assignment/user?username=' + username);
         }
 
     }

@@ -15,29 +15,30 @@
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
-
+            findFormById: findFormById
         };
 
         return service;
 
         function createFormForUser(userId, form) {
-            return $http.post('',form);
+            return $http.post('/api/assignment/user/'+ userId + '/form', form);
         }
 
         function findAllFormsForUser(userId) {
-            return $http.get('');
+            return $http.get('/api/assignment/user/'+ userId + '/form');
+        }
+
+        function findFormById(formId) {
+            return $http.get('/api/assignment/form/'+ formId);
         }
 
         function deleteFormById(formId) {
-            return $http.delete();
+            return $http.delete('/api/assignment/form/' + formId);
         }
 
         function updateFormById(formId, newForm) {
-            return $http.put('',newform);
+            return $http.put('/api/assignment/form/' + formId,newform);
         }
-
-
-
 
     }
 })();
