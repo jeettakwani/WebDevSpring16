@@ -2,44 +2,31 @@
  * Created by jtakwani on 2/19/16.
  */
 
-(function()
-{
-    "use strict";
-
-
+(function(){
     angular
         .module("FormBuilderApp")
-        .controller("LoginController", LoginController);
+        .controller("LoginController",LoginController);
 
-    function LoginController($rootScope,$scope, $location, UserService,$http) {
-
-        $scope.hide = true;
-        $scope.dispalert = false;
+    function LoginController($rootScope, $scope, $location, UserService) {
+        "use strict";
 
 
-        $scope.login = function() {
+        $scope.login = function(){
 
-            //$rootScope.user = $scope.user;
+            var username = $scope.username;
+            var password = $scope.password;
 
-            UserService.findUserByCredentials($scope.username, $scope.password,
-                function(response) {
-                    if(response) {
-                        console.log(response);
-                        $rootScope.user = response;
-                        $location.path("/profile");
-                    }
-                    else {
-                        $scope.dispalert = true;
-                    }
+            UserService.findUserByCredentials(username,password).then(function(response){
 
-                });
-
-
+                if (response) {
+                    console.log(response);
+                    $rootScope.user = response.data;
+                    console.log($rootScope.user);
+                    $location.path("/profile");
+                }
+            });
         };
 
-
     }
-
-
 
 })();

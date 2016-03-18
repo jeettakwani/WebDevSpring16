@@ -2,8 +2,7 @@
  * Created by jtakwani on 2/19/16.
  */
 
-(function()
-{
+(function () {
     angular
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
@@ -11,7 +10,7 @@
     function RegisterController($rootScope, $scope, $location, UserService) {
 
         $scope.users = {}
-        UserService.findAllUsers(function(response){
+        UserService.findAllUsers().then(function (response) {
             "use strict";
             $scope.users = response;
         });
@@ -20,8 +19,8 @@
         $scope.dispalert = false;
 
 
-        $scope.register = function() {
-            if($scope.password != $scope.verifyPassword)
+        $scope.register = function () {
+            if ($scope.password != $scope.verifyPassword)
                 dispalert = true;
 
             $rootScope.user = {};
@@ -31,9 +30,9 @@
             $rootScope.user.email = $scope.email;
             $rootScope.user._id = (new Date).getTime();
 
-            UserService.createUser($rootScope.user,
-                function(response) {
-                    console.log(response);
+            UserService.createUser($rootScope.user).then(
+                function (response) {
+                    console.log(response.data);
                 });
 
             $location.path("/profile");
@@ -41,7 +40,6 @@
 
 
     }
-
 
 
 })();

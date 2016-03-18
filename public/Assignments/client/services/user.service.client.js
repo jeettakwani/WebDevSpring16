@@ -29,16 +29,16 @@
         }
 
         function deleteUserById(userId) {
-            return $http.delete('/api/assignment/user' + userId);
+            return $http.delete('/api/assignment/user/' + userId);
         }
 
         function updateUser(userId, user) {
-            return $http.put('/api/assignment/user'+ userId, user);
+            return $http.put('/api/assignment/user/'+ userId, user);
         }
 
         function findUserByCredentials(username, password) {
 
-            $http.get('/api/assignment/user?username'+ username
+            return $http.get('/api/assignment/user?username='+ username
                 +'&password=' + password);
         }
 

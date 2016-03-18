@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FormBuilderApp">
+<head>
+
+    <title>Forms</title>
+
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Forms</h1>
+
+            <div>
+                <ul class="nav nav-tabs nav-justified">
+                    <li><a href="#/forms">Forms</a></li>
+                    <li class="active"><a href="#">Fields</a></li>
+                </ul>
+
+            </div>
+            <div class="form-horizontal" ng-repeat="field in fields">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label  class="label-control">{{field.label}}</label>
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <i ng-click="deleteField($index)" class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="col-xs-6" ng-switch="field.type">
+                            <input type="text" class="form-control" ng-switch-when="TEXT" placeholder="{{field.placeholder}}">
+                            <input type="date" class="form-control col-xs-6" ng-switch-when="DATE" placeholder="{{field.placeholder}}">
+                            <input type="email" class="form-control col-xs-6" ng-switch-when="EMAIL" placeholder="{{field.placeholder}}">
+                            <textarea class="form-control col-xs-6" ng-switch-when="TEXTAREA" placeholder="{{field.placeholder}}"></textarea>
+                            <select class="form-control col-xs-6" ng-switch-when="OPTIONS">
+                                <option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
+                            </select>
+                            <div class="checkbox" ng-switch-when="CHECKBOXES" ng-repeat="option in field.options">
+                                <label><input type="checkbox" value="{{option.value}}"> {{option.label}}</label>
+                            </div>
+                            <div class="radio" ng-switch-when="RADIOS" ng-repeat="option in field.options">
+                                <label><input type="radio" value="{{option.value}}"> {{option.label}}</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="row"></div>
+                <hr>
+                <div class="form-group">
+
+                    <label for="AddNewField">Add New Field:</label>
+                    <div class="form-inline">
+
+                        <div class=" col-xs-6">
+                            <select id="AddNewField" ng-model="fieldType" class="form-control">
+                                <option value="TEXT" selected>Single Line Text Field</option>
+                                <option value="TEXTAREA">Multi Line Text Field</option>
+                                <option value="DATE">Date Field</option>
+                                <option value="EMAIL">Email Field</option>
+                                <option value="OPTIONS">Dropdown Field</option>
+                                <option value="CHECKBOXES">Checkboxes Field</option>
+                                <option value="RADIOS">Radio Buttons Field</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-offset-1 col-xs-5">
+                            <i ng-click="addField(fieldType)" class="glyphicon glyphicon-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

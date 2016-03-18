@@ -11,6 +11,7 @@
         "use strict";
 
         $scope.user = $rootScope.user;
+        console.log($rootScope.user);
 
         $scope.username = $scope.user.username;
         $scope.firstName = $scope.user.firstName;
@@ -28,7 +29,7 @@
             user.password = this.password;
             user.roles = this.user.roles;
 
-            UserService.updateUser(user._id,user,function(response){
+            UserService.updateUser(user._id,user).then(function(response){
                 console.log(response);
             });
 

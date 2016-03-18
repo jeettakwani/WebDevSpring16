@@ -5,9 +5,9 @@
     "use strict";
     angular
         .module("FormBuilderApp")
-        .factory("FormService", formService);
+        .factory("FieldService", fieldService);
 
-    function formService($http) {
+    function fieldService($http) {
 
         var service = {
             createFieldForForm: createFieldForForm,

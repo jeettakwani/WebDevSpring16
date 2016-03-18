@@ -37,7 +37,7 @@ module.exports = function() {
         for (var u in users) {
             if(users[u]._id == userId) {
                 user[u] = user;
-                return users
+                return user[u];
             }
         }
         return null;
