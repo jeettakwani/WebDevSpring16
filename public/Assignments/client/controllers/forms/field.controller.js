@@ -132,7 +132,7 @@
             }
             else if (type == "CHECKBOXES") {
 
-                var str = $scope.formData.checkboxes;
+                var str = $scope.formData.checkboxesValue;
                 var opts = str.split("\n");
                 var l = {};
                 for (var o in opts) {
