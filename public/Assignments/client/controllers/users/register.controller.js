@@ -28,11 +28,10 @@
             $rootScope.user.username = $scope.username;
             $rootScope.user.password = $scope.password;
             $rootScope.user.email = $scope.email;
-            $rootScope.user._id = (new Date).getTime();
 
             UserService.createUser($rootScope.user).then(
                 function (response) {
-                    console.log(response.data);
+                    $rootScope.user = response.data;
                 });
 
             $location.path("/profile");

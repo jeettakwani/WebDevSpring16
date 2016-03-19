@@ -1,7 +1,7 @@
 /**
  * Created by jtakwani on 3/16/16.
  */
-(function() {
+(function () {
     "use strict";
     angular
         .module("FormBuilderApp")
@@ -9,34 +9,40 @@
 
     function fieldService($http) {
 
+
         var service = {
             createFieldForForm: createFieldForForm,
             getFieldsForForm: getFieldsForForm,
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
-            updateField: updateField
+            updateField:updateField
+
         };
 
         return service;
 
         function createFieldForForm(formId, field) {
-            return http.post('/api/assignment/form/'+ formId+'/field',field);
+            return $http.post('/api/assignment/form/' + formId + '/field', field);
         }
 
         function getFieldsForForm(formId) {
-            return $http.get('/api/assignment/form/'+ formId+'/field');
+            return $http.get('/api/assignment/form/' + formId + '/field');
         }
 
-        function getFieldForForm(formId, fieldId) {
+        function getFieldForForm(formId,fieldId) {
+
             return $http.get('/api/assignment/form/' + formId + '/field/' + fieldId);
         }
 
         function deleteFieldFromForm(formId, fieldId) {
-            return $http.delete('/api/assignment/form/' + formId + '/field/' + fieldId);
+
+            return $http.delete('/api/assignment/form/'+formId+'/field/'+fieldId);
         }
 
-        function updateField(formId, fieldId, field) {
-            $http.put('/api/assignment/form/' + formId + '/field/' + fieldId, field);
+        function updateField(formId,fieldId,field){
+            return $http.put('/api/assignment/form/'+formId+ '/field/' + fieldId ,field);
+
         }
+
     }
 })();

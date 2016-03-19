@@ -2,75 +2,81 @@
  * Created by jtakwani on 3/6/16.
  */
 
-var users = require('./user.mock.json');
+var users = require("./user.mock.json");
 
-module.exports = function() {
+module.exports = function () {
+    "use strict";
+
     var api = {
-        createUser: createUser,
         findAllUsers: findAllUsers,
-        findUserById: findUserById,
+        findUserByCredentials: findUserByCredentials,
+        createUser: createUser,
+        deleteUserById: deleteUserById,
         updateUser: updateUser,
-        deleteUser: deleteUser,
-        findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials
+        findUserById: findUserById,
+        findUserByUsername: findUserByUsername
     };
+
     return api;
 
-    function createUser(user) {
-        users.push(user);
-        return user;
+    function findUserById(userId) {
+        for (var u in users) {
+            if (users[u]._id == userId)
+                return users[u];
+        }
+        return null;
+
     }
 
     function findAllUsers() {
         return users;
     }
 
-    function findUserById(userId) {
+    function findUserByCredentials(username, password) {
         for (var user in users) {
-            if(users[user]._id == userId)
-            return users[user]
+
+            if (users[user].username === username && users[user].password === password) {
+                return users[user];
+            }
         }
-        return null
+        return null;
+    }
+
+    function findUserByUsername(username) {
+        for (var user in users) {
+
+            if (users[user].username === username) {
+                return users[user];
+            }
+        }
+        return null;
+    }
+
+    function createUser(user) {
+
+        users.push(user);
+
+        return user;
+    }
+
+    function deleteUserById(userId) {
+
+        for (var user in users) {
+            if (users[user]._id == userId) {
+                users.splice(user, 1);
+            }
+        }
+        return users;
     }
 
     function updateUser(userId, user) {
         for (var u in users) {
-            if(users[u]._id == userId) {
-                user[u] = user;
-                return user[u];
+            if (users[u]._id === userId) {
+                users[u] = user;
+                break;
             }
-        }
-        return null;
-    }
 
-    function deleteUser(userId) {
-        for (var u in users) {
-            if (users[u]._id == userId) {
-                users.splice(u, 1);
-                return true;
-            }
         }
-        return false;
+        return user;
     }
-
-    function findUserByUsername(username) {
-        console.log(username);
-        for (var u in users) {
-            if(users[u].username == username) {
-                return users[u];
-            }
-        }
-        return null;
-
-    }
-
-    function findUserByCredentials(credentials) {
-        for (var u in users) {
-            if(users[u].username == credentials.username &&
-                users[u].password == credentials.password) {
-                return users[u];
-            }
-        }
-        return null;
-    }
-};
+}
