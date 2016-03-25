@@ -5,7 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
-    background-image: url("../Project/images/background.png");
+    background-image: url("../Project/client/images/background.png");
     color: #428bca;
 }
 
@@ -130,7 +130,7 @@ body {
     margin-left: 10px;
     height: 400px;
     width: 600px;
-    content: url("../Project/images/fifa-16-global-cover-ps3.jpg");
+    content: url("../Project/client/images/fifa-16-global-cover-ps3.jpg");
 }
 
 .profile {

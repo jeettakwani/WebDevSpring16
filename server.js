@@ -14,4 +14,5 @@ app.get('/hello', function(req, res){
     res.send('hello world');
 });
 require('./public/Assignments/server/javascript/app.js')(app);
+require('./public/Project/server/javascript/app.js')(app);
 app.listen(port, ipaddress);

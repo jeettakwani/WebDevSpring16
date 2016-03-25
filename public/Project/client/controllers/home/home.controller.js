@@ -21,19 +21,18 @@
 
 
             //$rootScope.user = $scope.user;
+            var username = $scope.username;
+            var password = $scope.password;
 
-            UserService.findUserByCredentials($scope.username, $scope.password,
-                function(response) {
-                    if(response) {
-                        console.log(response);
-                        $rootScope.user = response;
-                        $location.path("/search");
-                    }
-                    else {
-                        $scope.dispalert = true;
-                    }
+            UserService.findUserByCredentials(username,password).then(function(response){
 
-                });
+                if (response) {
+                    console.log(response);
+                    $rootScope.user = response.data;
+                    console.log($rootScope.user);
+                    $location.path("/search");
+                }
+            });
 
 
         };
