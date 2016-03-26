@@ -4,6 +4,7 @@
 module.exports = function (app, model) {
     "use strict";
 
+    var uuid = require('node-uuid');
     app.post('/api/project/user', createUser);
     app.get('/api/project/user/:id', getUserById);
     app.all('/api/project/user', function (req, res, next) {
@@ -80,10 +81,10 @@ module.exports = function (app, model) {
 
         var user = model.updateUser(id,user);
         if (user) {
-            res.send(200);
+            res.send(user);
             return;
         }
-        res.send(404);
+        res.send('not updated');
     }
 
     function deleteUser(req, res) {
@@ -96,4 +97,4 @@ module.exports = function (app, model) {
     }
 
 
-}
+};

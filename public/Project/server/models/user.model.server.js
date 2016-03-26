@@ -10,6 +10,7 @@ var users = require("./user.mock.json");
 module.exports = function () {
     "use strict";
 
+    var uuid = require('node-uuid');
     var api = {
         findAllUsers: findAllUsers,
         findUserByCredentials: findUserByCredentials,

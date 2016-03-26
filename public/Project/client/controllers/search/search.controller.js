@@ -18,11 +18,9 @@
         function search(gameName) {
             //$location.url("/search/" + $scope.gameName);
             console.log(gameName);
-            GameService.findGameByTitle(
-                gameName,
-                function (response) {
+            GameService.findGameByTitle(gameName).then(function (response) {
                     console.log(response);
-                    $scope.data = response;
+                    $scope.data = response.data;
                 });
         }
     }

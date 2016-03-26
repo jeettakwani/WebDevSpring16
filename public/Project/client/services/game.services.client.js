@@ -19,12 +19,28 @@
         return api;
 
         function findGameByTitle(title) {
-            return $http.get('/api/project/game?title='+title);
+            return $http.jsonp('http://www.giantbomb.com/api/search/', {
+                params: {
+                    api_key: "33a4f5bd73d5408c13b6da96c011da9b2f635bb8",
+                    format: 'jsonp',
+                    json_callback: 'JSON_CALLBACK',
+                    resources: 'game',
+                    limit: '20',
+                    query: title
+                }
+            })
         }
 
         function findGameByID(id) {
             console.log(id);
-            return $http.get('/api/project/game/'+id);
+            return $http.jsonp('http://www.giantbomb.com/api/game/'+id+'/', {
+                params: {
+                    api_key: "33a4f5bd73d5408c13b6da96c011da9b2f635bb8",
+                    format: 'jsonp',
+                    json_callback: 'JSON_CALLBACK',
+                    limit: '20'
+                }
+            });
         }
 
         function createGameForUSer(userId, game) {
@@ -35,8 +51,8 @@
             return $http.get('/api/project/user/'+userId+'/game');
         }
 
-        function deleteGameById(gameId) {
-            return $http.delete('/api/project/game/'+gameId);
+        function deleteGameById(id) {
+            return $http.delete('/api/project/game/'+id);
         }
 
         function updateGameById(gameId, newGame) {

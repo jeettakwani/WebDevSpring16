@@ -13,10 +13,10 @@
         $scope.gameId = $routeParams.id;
 
         GameService.findGameByID(
-            $scope.gameId,
+            $scope.gameId).then(
             function(response) {
                 console.log(response);
-                $scope.game = response;
+                $scope.game = response.data;
                 $scope.NewDetails=$sce.trustAsHtml($scope.game.results.description);
             }
         );

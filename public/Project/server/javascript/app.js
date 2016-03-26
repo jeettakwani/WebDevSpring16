@@ -3,9 +3,10 @@
  */
 
 module.exports = function (app) {
+    //var http = require('http');
     var userModel = require("../models/user.model.server.js")();
     var userService = require("../services/user.service.server.js")(app, userModel);
-    //var formModel = require("../models/form.model.server.js")();
-    //var formService = require("../services/form.service.server.js")(app, formModel);
+    var gameModel = require("../models/game.model.server.js")();
+    var gameService = require("../services/game.service.server.js")(app, gameModel);
     //var fieldService = require("../services/field.service.server.js")(app, formModel);
 };
