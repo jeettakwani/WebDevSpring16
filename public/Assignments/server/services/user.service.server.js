@@ -23,12 +23,15 @@ module.exports = function (app, model) {
         var user = req.body;
         var id =  uuid.v4();
         user._id = id;
-        user = model.createUser(user);
-        if (user) {
-            res.send(200);
-            return;
-        }
-        res.json({message: "User not created"});
+        user = model.createUser(user)
+            .then(
+                function (doc) {
+                    res.json(user)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getUserById(req, res) {
