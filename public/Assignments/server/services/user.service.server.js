@@ -1,6 +1,6 @@
 module.exports = function (app, model) {
     "use strict";
-
+    var uuid = require('node-uuid');
     app.post('/api/assignment/user', createUser);
     app.get('/api/assignment/user/:id', getUserById);
     app.all('/api/assignment/user', function (req, res, next) {
@@ -22,8 +22,8 @@ module.exports = function (app, model) {
     function createUser(req, res) {
         var user = req.body;
         var id =  uuid.v4();
-        user._id = id;
-        user = model.createUser(user)
+        //user._id = id;
+        model.createUser(user)
             .then(
                 function (doc) {
                     res.json(doc)
@@ -91,10 +91,10 @@ module.exports = function (app, model) {
     }
 
     function updateUser(req, res) {
-        var id = req.params.id;
+        var id = req.params.userId;
         var user = req.body;
 
-        var Updateduser = model.updateUser(user)
+        model.updateUser(id,user)
             .then(
                 function (doc) {
                     res.json(doc)
