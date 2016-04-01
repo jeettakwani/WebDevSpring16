@@ -11,8 +11,15 @@ module.exports = function(app,model){
 
     function getAllFields(req,res){
         var formId = req.params.formId;
-        var form = model.findFormById(formId);
-        res.json(form.fields);
+        var field = model.findFormById(formId)
+            .then(
+                function (doc) {
+                    res.json(doc.fields)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getFieldById(req, res) {
@@ -20,12 +27,15 @@ module.exports = function(app,model){
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
 
-        var form = model.findFormById(formId);
-
-        for (var field in form.fields) {
-            if (form.fields[field]._id == fieldId)
-                res.json(form.fields[field])
-        }
+        var field = model.findFormById(formId)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteField(req,res){
@@ -33,38 +43,33 @@ module.exports = function(app,model){
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
 
-        var form = model.findFormById(formId);
-
-        for (var field in form.fields) {
-            if (form.fields[field]._id == fieldId)
-                form.fields.splice(field,1)
-        }
-
-        if(model.updateFormById(formId,form)){
-            res.send(200);
-            return;
-        }
-        res.send(404);
+        model.deleteField(fieldId,formId)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
-    function createField(req,res){
+    function createField(req,res) {
         var formId = req.params.formId;
         var field = req.body;
 
         var id =  uuid.v4();
         field._id = id;
 
-        var form = model.findFormById(formId);
-
-
-        console.log(form.fields);
-        form.fields.push(field);
-        if(model.updateFormById(formId,form)){
-            res.send(200);
-            return;
-        }
-
-        res.json({message: "Field not created"});
+        var form = model.findFormById(formId)
+            .then(
+                function (doc) {
+                    res.json(field)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function updateField(req,res){
@@ -72,19 +77,16 @@ module.exports = function(app,model){
         var fieldId = req.params.fieldId;
         var newField = req.body;
 
-        var form = model.findFormById(formId);
-
-        for (var field in form.fields) {
-            if (form.fields[field]._id == fieldId)
-                form.fields[field] = newField;
-        }
-
-        if (model.updateFormById(formId,form)) {
-            res.send(200);
-            return;
-        }
-        res.send(404);
+        model.updateField(fieldId,formId,newField)
+            .then(
+                function (doc) {
+                    res.json(field)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
 
-}
+};

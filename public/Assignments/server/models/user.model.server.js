@@ -25,16 +25,39 @@ module.exports = function (db, mongoose) {
     return api;
 
     function findUserById(userId) {
-        for (var u in users) {
-            if (users[u]._id == userId)
-                return users[u];
-        }
-        return null;
+        var deferred = q.defer();
 
+        UserModel.findUserById({_id : userId},function(err,doc)
+        {
+            if(err)
+            {
+                deferred.reject(err);
+            }
+            else
+            {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function findAllUsers() {
-        return users;
+        var deferred = q.defer();
+
+        UserModel.find({},function(err,doc)
+        {
+            if(err)
+            {
+                deferred.reject(err);
+            }
+            else
+            {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function findUserByCredentials(username, password) {
@@ -58,7 +81,7 @@ module.exports = function (db, mongoose) {
     function findUserByUsername(username) {
         var deferred = q.defer();
 
-        UserModel.find({},function(err,doc)
+        UserModel.findOne({username : username},function(err,doc)
         {
             if(err)
             {

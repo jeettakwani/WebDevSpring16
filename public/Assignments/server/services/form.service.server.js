@@ -12,23 +12,41 @@ module.exports = function(app,model){
 
     function getAllForms(req,res){
         var userId = req.params.userId;
-        var forms = model.findAllFormsForUser(userId);
-        res.json(forms);
+        var forms = model.findAllFormsForUser(userId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getFormById(req,res){
         var formId = req.params.formId;
-        var form = model.findFormById(formId);
-        res.json(form);
+        var form = model.findFormById(formId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteForm(req,res){
         var formId = req.params.formId;
-        if(model.deleteFormById(formId)){
-            res.send(200);
-            return;
-        }
-        res.json({message: "Form not found"});
+        var deletedForm = model.deleteFormById(formId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function createForm(req,res){
@@ -38,27 +56,41 @@ module.exports = function(app,model){
         form._id = id;
         form.fields = [];
         var userId = req.params.userId;
-        if (model.createFormForUser(userId,form)) {
-            res.send(200);
-            return;
-        }
-        res.json({message: "Form not created"});
+        var createdForm = model.createFormForUser(userId,form)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function updateForm(req,res){
         var newForm = req.body;
         var formId = req.params.formId;
-        if (model.updateFormById(formId,newForm)) {
-            res.send(200);
-            return;
-        }
-        res.send(404);
+        var updatedForm = model.updateFormById(formId,newForm)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getFormByTitle(req,res){
         var title = req.params.title;
-        var form = model.findFormByTitle(title);
-        res.json(form);
+        var form = model.findFormByTitle(title)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
-
-}
+};

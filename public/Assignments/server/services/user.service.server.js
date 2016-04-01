@@ -26,7 +26,7 @@ module.exports = function (app, model) {
         user = model.createUser(user)
             .then(
                 function (doc) {
-                    res.json(user)
+                    res.json(doc)
                 },
                 function (err) {
                     res.status(400).send(err);
@@ -36,64 +36,86 @@ module.exports = function (app, model) {
 
     function getUserById(req, res) {
         var id = req.params.id;
-        var user = model.findUserById(id);
-        if (user) {
-            res.json(user);
-            return;
-        }
-        res.json({message: "User not found"});
+        var user = model.findUserById(id)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getAllUsers(req, res) {
         console.log(req.query.username == null);
-        var users = model.findAllUsers();
-        res.json(users);
+        var users = model.findAllUsers()
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
 
     function findUserByUsername(req, res) {
 
         var username = req.query.username;
-        var user = model.findUserByUsername(username);
-        if (user) {
-            res.json(user);
-            return;
-        }
-        res.json({message: "User Not found"});
+        var user = model.findUserByUsername(username)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
 
-        var user = model.findUserByCredentials(username, password);
-        if (user) {
-            res.json(user);
-            return;
-        }
-        res.json({message: "User Not found"});
+        var user = model.findUserByCredentials(username, password)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function updateUser(req, res) {
         var id = req.params.id;
         var user = req.body;
 
-        var user = model.updateUser(user);
-        if (user) {
-            res.send(200);
-            return;
-        }
-        res.send(404);
+        var Updateduser = model.updateUser(user)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteUser(req, res) {
         var id = req.params.id;
-        if (model.deleteUserById(id)) {
-            res.send(200);
-            return;
-        }
-        res.json({message: "User not found"});
+        var user = model.deleteUserById(id)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
-
-}
+};
