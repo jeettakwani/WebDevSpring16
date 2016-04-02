@@ -37,6 +37,7 @@
 
             UserService.updateUser(user._id,user).then(function(response){
                 console.log(response);
+                $rootScope.user = response.data;
             });
 
             $location.path("/profile");

@@ -145,7 +145,7 @@ module.exports = function (db, mongoose) {
                 loggedInUser.lastName = user.lastName;
                 loggedInUser.password = user.password;
                 loggedInUser.username = user.username;
-                loggedInUser.emails = user.emails;
+                loggedInUser.email = user.email;
                 loggedInUser.phones = user.phones;
                 loggedInUser.save(function (err,doc) {
                     if(err)

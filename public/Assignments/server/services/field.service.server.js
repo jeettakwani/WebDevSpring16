@@ -11,7 +11,7 @@ module.exports = function(app,model){
 
     function getAllFields(req,res){
         var formId = req.params.formId;
-        var field = model.findFormById(formId)
+        model.findAllFields(formId)
             .then(
                 function (doc) {
                     res.json(doc.fields)
@@ -58,13 +58,13 @@ module.exports = function(app,model){
         var formId = req.params.formId;
         var field = req.body;
 
-        var id =  uuid.v4();
-        field._id = id;
+        //var id =  uuid.v4();
+        //field._id = id;
 
-        var form = model.findFormById(formId)
+        var form = model.createField(formId,field)
             .then(
                 function (doc) {
-                    res.json(field)
+                    res.json(doc)
                 },
                 function (err) {
                     res.status(400).send(err);
@@ -80,7 +80,7 @@ module.exports = function(app,model){
         model.updateField(fieldId,formId,newField)
             .then(
                 function (doc) {
-                    res.json(field)
+                    res.json(doc)
                 },
                 function (err) {
                     res.status(400).send(err);

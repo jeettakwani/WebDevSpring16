@@ -67,7 +67,7 @@ module.exports = function(mongoose) {
         return deferred.promise;
     }
     
-    function createField() {
+    function createField(formId,newField) {
         var deferred = q.defer();
 
         FormModel.findById({_id : formId},function(err,form)
@@ -96,12 +96,12 @@ module.exports = function(mongoose) {
                 });
             }
         });
-
+        //console.log(deferred)
         return deferred.promise;
     }
 
     function fieldsAsPerType(field) {
-        var newField = "";
+        var upNewField = "";
         if(field.type == "TEXT" || field.type == "TEXTAREA")
         {
             upNewField =
@@ -128,7 +128,7 @@ module.exports = function(mongoose) {
             };
         }
 
-        return newField;
+        return upNewField;
     }
 
     function deleteField(fieldId, formId) {

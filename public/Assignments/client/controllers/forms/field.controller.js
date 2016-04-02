@@ -80,7 +80,7 @@
         $scope.deleteField = function (index) {
 
             var field_id = $scope.fields[index]._id;
-            console.log(FieldService.deleteFieldFromForm($scope.formId, field_id));
+            //console.log(FieldService.deleteFieldFromForm($scope.formId, field_id));
             FieldService.deleteFieldFromForm($scope.formId, field_id).then(function (response) {
 
                 FieldService.getFieldsForForm($scope.formId).then(
@@ -171,16 +171,12 @@
             }
 
             FieldService.updateField($scope.formId, _id, updatedField).then(
-                function (response) {
-
-                    FieldService.getFieldsForForm($scope.formId).then(
                         function (response) {
-                            $scope.fields = response.data;
+                            //console.log(response.data);
+                            $scope.fields = response.data.fields;
                         }
                     );
 
-                }
-            );
 
         }
 
@@ -202,32 +198,29 @@
             }
 
 
-            FormService.findFormById($scope.formId).then(
-                function (response) {
-                    console.log(response.data);
-                    $scope.newform = response.data;
-                    $scope.newform.fields = $scope.fieldOrder;
-
-                    FormService.updateFormById($scope.formId, $scope.newform).then(
-                        FieldService.getFieldsForForm($scope.formId).then(
-                            function (response) {
-                                $scope.fields = response.data;
-                            }
-                        )
-                    );
-                }
-            );
+            // FormService.findFormById($scope.formId).then(
+            //     function (response) {
+            //         console.log(response.data);
+            //         $scope.newform = response.data;
+            //         $scope.newform.fields = $scope.fieldOrder;
+            //
+            //         FormService.updateFormById($scope.formId, $scope.newform).then(
+            //             function(response) {
+            //                 $scope.fields = response.data;
+            //
+            //             }
+            //         );
+            //     }
+            // );
         }
 
         $scope.cloneField = function (index) {
 
             var newField = $scope.fields[index];
             FieldService.createFieldForForm($scope.formId, newField).then(
-                FieldService.getFieldsForForm($scope.formId).then(
                     function (response) {
-                        $scope.fields = response.data;
+                        $scope.fields = response.data.fields;
                     }
-                )
             );
         }
     }

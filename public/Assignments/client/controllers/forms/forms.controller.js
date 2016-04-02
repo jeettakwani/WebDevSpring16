@@ -13,8 +13,9 @@
         $scope.forms = {};
 
         if ($rootScope.user != null) {
-            console.log(FormService);
+
             FormService.findAllFormsForUser($scope.rootScope.user._id).then(function (response) {
+                console.log(response.data);
                 $scope.forms = response.data;
             });
         }
@@ -22,7 +23,7 @@
         $scope.addForm = function () {
 
             var newForm = {
-                recipe: $scope.formName,
+                title: $scope.formName,
                 userId: $scope.rootScope.user._id
             };
 
@@ -42,7 +43,7 @@
 
             var newForm = {
 
-                _id: $scope.forms[$scope.selectedFormIndex]._id,
+                //_id: $scope.forms[$scope.selectedFormIndex]._id,
                 recipe: $scope.formName,
                 userId: $scope.rootScope.user._id
 
@@ -61,7 +62,7 @@
 
         $scope.selectForm = function (index) {
             $scope.selectedFormIndex = index;
-            $scope.formName = $scope.forms[index].recipe;
+            $scope.formName = $scope.forms[index].title;
         };
 
         $scope.deleteForm = function (index) {

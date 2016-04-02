@@ -12,7 +12,7 @@ module.exports = function(app,model){
 
     function getAllForms(req,res){
         var userId = req.params.userId;
-        var forms = model.findAllFormsForUser(userId)
+        model.findAllFormsForUser(userId)
             .then(
                 function (doc) {
                     res.json(doc);
@@ -53,10 +53,10 @@ module.exports = function(app,model){
 
         var form = req.body;
         var id =  uuid.v4();
-        form._id = id;
+        //form._id = id;
         form.fields = [];
         var userId = req.params.userId;
-        var createdForm = model.createFormForUser(userId,form)
+        model.createFormForUser(userId,form)
             .then(
                 function (doc) {
                     res.json(doc);
@@ -70,7 +70,7 @@ module.exports = function(app,model){
     function updateForm(req,res){
         var newForm = req.body;
         var formId = req.params.formId;
-        var updatedForm = model.updateFormById(formId,newForm)
+        model.updateFormById(formId,newForm)
             .then(
                 function (doc) {
                     res.json(doc)
@@ -83,7 +83,7 @@ module.exports = function(app,model){
 
     function getFormByTitle(req,res){
         var title = req.params.title;
-        var form = model.findFormByTitle(title)
+        model.findFormByTitle(title)
             .then(
                 function (doc) {
                     res.json(doc)
