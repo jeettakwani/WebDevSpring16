@@ -29,7 +29,7 @@
             $rootScope.user.password = $scope.password;
             $rootScope.user.email = $scope.email;
 
-            UserService.createUser($rootScope.user).then(
+            UserService.register($rootScope.user).then(
                 function (response) {
                     $rootScope.user = response.data;
                 });
