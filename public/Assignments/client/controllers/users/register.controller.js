@@ -9,11 +9,11 @@
 
     function RegisterController($rootScope, $scope, $location, UserService) {
 
-        $scope.users = {}
-        UserService.findAllUsers().then(function (response) {
-            "use strict";
-            $scope.users = response;
-        });
+        // $scope.users = {}
+        // UserService.findAllUsers($rootScope.user).then(function (response) {
+        //     "use strict";
+        //     $scope.users = response;
+        // });
 
         $scope.hide = true;
         $scope.dispalert = false;
@@ -29,7 +29,7 @@
             $rootScope.user.password = $scope.password;
             $rootScope.user.email = $scope.email;
 
-            UserService.createUser($rootScope.user).then(
+            UserService.register($rootScope.user).then(
                 function (response) {
                     $rootScope.user = response.data;
                 });

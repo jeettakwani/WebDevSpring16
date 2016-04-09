@@ -13,10 +13,9 @@
 
         $scope.login = function(){
 
-            var username = $scope.username;
-            var password = $scope.password;
+            $scope.user = {username: $scope.username, password:$scope.password};
 
-            UserService.findUserByCredentials(username,password).then(function(response){
+            UserService.login($scope.user).then(function(response){
 
                 if (response) {
                     console.log(response);

@@ -27,7 +27,7 @@ module.exports = function (db, mongoose) {
     function findUserById(userId) {
         var deferred = q.defer();
 
-        UserModel.findUserById({_id : userId},function(err,doc)
+        UserModel.findById({_id : userId},function(err,doc)
         {
             if(err)
             {
@@ -147,6 +147,7 @@ module.exports = function (db, mongoose) {
                 loggedInUser.username = user.username;
                 loggedInUser.email = user.email;
                 loggedInUser.phones = user.phones;
+                loggedInUser.roles = user.roles;
                 loggedInUser.save(function (err,doc) {
                     if(err)
                         deferred.reject(err);
