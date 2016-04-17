@@ -1,21 +1,21 @@
 /**
- * Created by jtakwani on 3/8/16.
+ * Created by jtakwani on 4/16/16.
  */
 
 ( function () {
     "use strict";
     angular
         .module("GameRental")
-        .controller("GameController", GameController);
+        .controller("FollowerController", FollowerController);
 
-    function GameController($rootScope, $scope, $location, GameService) {
+    function FollowerController($rootScope, $scope, $location, UserService) {
         $scope.$location = $location;
         $scope.user = $rootScope.user;
         $scope.games = {};
 
         if($rootScope.user != null){
-            GameService.findAllGamesForUser($scope.user._id).then(function(response){
-                $scope.games = response.data;
+            UserService.findAllUsersForUser($scope.user._id).then(function(response){
+                $scope.friends = response.data;
             });
         }
 
@@ -67,12 +67,12 @@
             $scope.gameName = $scope.games[index].title;
         };
 
-        $scope.removeGame = function (index) {
+        $scope.removeFriend = function (index) {
             $scope.selectedGameIndex = index;
 
-            GameService.deleteGameById($scope.games[index]._id).then(function(response) {
-                GameService.findAllGamesForUser($rootScope.user._id).then(function(response){
-                    $scope.games = response.data;
+            UserService.deleteFriendById($scope.friends[index].following).then(function(response) {
+                UserService.findAllUsersForUser($rootScope.user._id).then(function(response){
+                    $scope.friends = response.data;
                 });
             });
         };

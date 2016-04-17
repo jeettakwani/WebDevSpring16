@@ -24,7 +24,7 @@
             var username = $scope.username;
             var password = $scope.password;
 
-            var user = {username:$scope.username, password:$scope.password};
+            var user = {username:username, password:password};
 
             UserService.login(user).then(function(response){
 

@@ -14,28 +14,39 @@
         console.log($rootScope.user);
 
         $scope.username = $scope.user.username;
-        $scope.firstName = $scope.user.firstName;
-        $scope.lastName = $scope.user.lastName;
+        $scope.firstname = $scope.user.firstname;
+        $scope.lastname = $scope.user.lastname;
         $scope.password = $scope.user.password;
+        $scope.address = $scope.user.address;
+        $scope.state = $scope.user.state;
+        $scope.zip = $scope.user.zip;
         $scope.email = $scope.user.email;
+        $scope.membership = $scope.user.membership;
 
         $scope.update = function(){
 
             var user = {};
             user._id = this.user._id;
             user.username = this.username;
-            user.firstName = this.firstName;
-            user.lastName = this.lastName;
+            user.firstname = this.firstname;
+            user.lastname = this.lastname;
             user.password = this.password;
+            user.address = this.address;
+            user.state = this.state;
+            user.zip = this.zip;
+            user.email = this.email
             user.roles = this.user.roles;
 
             UserService.updateUser(user._id,user).then(function(response){
-                 user = response.data;
-                $scope.username = user.username;
-                $scope.firstName = user.firstName;
-                $scope.lastName = user.lastName;
-                $scope.password = user.password;
-                $scope.email = user.email;
+                 $rootScope.user = response.data;
+                // $rootScope.user.username = user.username;
+                // $scope.firstname = user.firstname;
+                // $scope.lastname = user.lastname;
+                // $scope.password = user.password;
+                // $scope.address = user.address;
+                // $scope.state = user.state;
+                // $scope.zip = user.zip;
+                // $scope.email = user.email;
 
             });
 

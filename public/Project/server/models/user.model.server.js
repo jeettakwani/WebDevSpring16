@@ -12,7 +12,9 @@ module.exports = function (db, mongoose) {
 
     var uuid = require('node-uuid');
     var UserSchema = require("./user.schema.server.js")(mongoose);
-    var UserModel = mongoose.model('User', UserSchema);
+    var UserModel = mongoose.model('Proj_User', UserSchema);
+    var FriendSchema = require("./friend.schema.server.js")(mongoose);
+    var FriendModel = mongoose.model('proj_friends', FriendSchema);
 
     var api = {
         findAllUsers: findAllUsers,
@@ -21,7 +23,11 @@ module.exports = function (db, mongoose) {
         deleteUserById: deleteUserById,
         updateUser: updateUser,
         findUserById: findUserById,
-        findUserByUsername: findUserByUsername
+        findUserByUsername: findUserByUsername,
+        findUsersForUser: findUsersForUser,
+        findUsersByName: findUsersByName,
+        addFollower: addFollower,
+        deleteFriendById: deleteFriendById
     };
 
     return api;
@@ -143,13 +149,17 @@ module.exports = function (db, mongoose) {
                 deferred.reject(err);
             else
             {
-                loggedInUser.firstName = user.firstName;
-                loggedInUser.lastName = user.lastName;
+                loggedInUser.firstname = user.firstname;
+                loggedInUser.lastname = user.lastname;
                 loggedInUser.password = user.password;
                 loggedInUser.username = user.username;
+                loggedInUser.address = user.address;
+                loggedInUser.state = user.state;
+                loggedInUser.zip = user.zip;
                 loggedInUser.email = user.email;
                 loggedInUser.phones = user.phones;
                 loggedInUser.roles = user.roles;
+                loggedInUser.gameList = user.gameList;
                 loggedInUser.save(function (err,doc) {
                     if(err)
                         deferred.reject(err);
@@ -162,4 +172,98 @@ module.exports = function (db, mongoose) {
 
         return deferred.promise;
     }
+    
+    function findUsersForUser(userId) {
+        var deferred = q.defer();
+
+        FriendModel.find({follower:userId},function(err,users)
+        {
+            if(err)
+            {
+                deferred.reject(err);
+            }
+            else
+            {
+                deferred.resolve(users);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function findUsersByName(name) {
+        var deferred = q.defer();
+
+        var nameList = name.split(" ");
+        var firstname = "";
+        var lastname = "";
+        if (nameList.length > 1) {
+            firstname = nameList[0];
+            lastname = nameList[1];
+            UserModel.find({firstname:firstname,lastname:lastname},function(err,users)
+            {
+                if(err)
+                {
+                    deferred.reject(err);
+                }
+                else
+                {
+                    deferred.resolve(users);
+                }
+            });
+
+            return deferred.promise;
+
+        }
+        else {
+            UserModel.find({firstname:name},function(err,users)
+            {
+                if(err)
+                {
+                    deferred.reject(err);
+                }
+                else
+                {
+                    deferred.resolve(users);
+                }
+            });
+
+            return deferred.promise;
+        }
+    }
+
+    function addFollower(id, following) {
+        var deferred = q.defer();
+
+        FriendModel.create(following,function(err,users)
+        {
+            if(err)
+            {
+                deferred.reject(err);
+            }
+            else
+            {
+                deferred.resolve(users);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function deleteFriendById(id) {
+        var deferred = q.defer();
+
+        FriendModel.remove({following: id},function(err,doc)
+        {
+            if(err)
+                deferred.reject(err);
+            else
+            {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
+    }
+
 };

@@ -73,6 +73,14 @@
                     templateUrl: "views/games/mygames.view.html",
                     controller: "GameController"
                 })
+                .when("/following", {
+                    templateUrl: "views/users/following.view.html",
+                    controller: "FollowerController"
+                })
+                .when("/searchUsers", {
+                    templateUrl: "views/search/searchUsers.view.html",
+                    controller: "SearchController"
+                })
                 .otherwise({
                     redirectTo: "/"
                 });

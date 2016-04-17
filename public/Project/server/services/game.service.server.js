@@ -1,7 +1,7 @@
 /**
  * Created by jtakwani on 3/25/16.
  */
-module.exports = function(app,model) {
+module.exports = function(app,model, userModel) {
     "use strict";
 
     var uuid = require('node-uuid');
@@ -13,15 +13,37 @@ module.exports = function(app,model) {
     app.delete('/api/project/game/:id',deleteGameById);
     
     function createGameForUser(req, res) {
-        var userId = req.params.id;
-        var g = req.body;
+        var id = req.params.id;
+        var game = req.body;
 
-        var game = model.createGameForUser(userId, g);
-        if(game) {
-            res.json(game);
-            return;
-        }
-        res.json('Could not create game for user')
+        userModel.findUserById(id)
+            .then(
+                function (user) {
+                    user.gameList.push(game.tittle);
+
+                    userModel.updateUser(id,user)
+                        .then(
+                            function(doc) {
+                                model
+                                    .createGameForUser(id,game)
+                                    .then(
+                                        function (doc) {
+                                            res.json(doc);
+                                        },
+                                        function (err) {
+                                            res.status(400).send(err);
+                                        }
+                                    );
+                            },
+                            function (err) {
+
+                            }
+                        );
+                },
+                function (err) {
+
+                }
+            );
     }
 
     function getGameById(req, res) {
@@ -52,13 +74,14 @@ module.exports = function(app,model) {
     function getGamesForUser(req, res) {
         var userId = req.params.id;
 
-        var games = model.findAllGamesForUser(userId);
-
-        if(games) {
-            res.json(games);
-            return;
-        }
-        res.json('Games not found');
+        model.findAllGamesForUser(userId)
+            .then(function(games){
+                    res.json(games);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function updateGameById(req, res) {
@@ -75,14 +98,18 @@ module.exports = function(app,model) {
     }
 
     function deleteGameById(req, res) {
-        var gameId = req.params.id;
+        var id = req.params.id;
+        
 
-        var games = model.deleteGameById(gameId);
-
-        if(games) {
-            res.json(games);
-            return;
-        }
-        res.json("Game Not deleted");
+            model.deleteGameById(id)
+                .then(
+                    function (doc) {
+                        res.json(doc)
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    }
+                );
+        
     }
 };

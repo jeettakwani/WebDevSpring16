@@ -23,7 +23,7 @@
 
         <button class="btn btn-info btn-block ">Add Review</button>
 
-        <a href="#/mygames" button class="btn btn-info btn-block ">Save</a>
+        <button ng-click="addGame()" class="btn btn-info btn-block ">Save</button>
 
         <button
            ng-show="rootScope.user!=null && rootScope.user.roles.indexOf('admin')>=0"

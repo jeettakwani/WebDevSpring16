@@ -19,24 +19,24 @@
 
                     <div class="form-group">
 
-                    <label for="firstName" class="label-control col-sm-4 col-md-1">FirstName</label>
+                        <label for="firstname" class="label-control col-sm-4 col-md-1">First Name</label>
 
 
                         <div class="col-sm-6 col-md-4">
 
-                            <input ng-model="firstName" type="text"
+                            <input ng-model="firstname" type="text"
                                class="form-control col-sm-6 col-md-4"
-                                   id="firstName" placeholder="First Name">
+                                   id="firstname" placeholder="First Name">
 
                         </div>
 
-                        <label for="lastName" class="col-sm-4 col-md-1">Last Name</label>
+                        <label for="lastname" class="label-control col-sm-4 col-md-1">Last Name</label>
 
                         <div class="col-sm-6 col-md-4">
 
-                            <input ng-model="lastName" type="text"
+                            <input ng-model="lastname" type="text"
                                    class="form-control col-sm-6 col-md-4"
-                                   id="lastName" placeholder="Last Name">
+                                   id="lastname" placeholder="Last Name">
 
                         </div>
 
@@ -61,23 +61,23 @@
 
                     <div class="form-group">
 
-                        <label for="address1" class="label-control col-sm-4 col-md-1">Address</label>
+                        <label for="address" class="label-control col-sm-4 col-md-1">Address</label>
 
                         <div class="col-sm-6 col-md-4">
 
-                            <input  ng-model="address1" type="text"
+                            <input  ng-model="address" type="text"
                                     class="form-control col-sm-6 col-md-4"
-                                    id="address1" placeholder="Address">
+                                    id="address" placeholder="Address">
 
                         </div>
 
-                        <label for="address2" class="label-control col-sm-4 col-md-1">Address</label>
+                        <label for="state" class="label-control col-sm-4 col-md-1">State</label>
 
                         <div class="col-sm-6 col-md-4">
 
-                            <input type="text" ng-model="address2"
+                            <input type="text" ng-model="state"
                                    class="form-control col-sm-6 col-md-4"
-                                   id="address2" placeholder="Address">
+                                   id="state" placeholder="State">
 
                         </div>
 
@@ -100,16 +100,6 @@
 
                     <div class="form-group">
 
-                        <label for="state" class="label-control col-sm-4 col-md-1">State</label>
-
-                        <div class="col-sm-6 col-md-4">
-
-                            <input type="text" ng-model="state"
-                                   class="form-control col-sm-6 col-md-4"
-                                   id="state" placeholder="State">
-
-                        </div>
-
                         <label for="zip" class="label-control col-sm-4 col-md-1">Zip-Code</label>
 
                         <div class="col-sm-6 col-md-4">
@@ -119,25 +109,6 @@
                                    id="zip" placeholder="0000">
 
                         </div>
-
-                    </div>
-
-                    <!--
-                    <div class="form-group">
-
-                        <label for="zip" class="label-control col-sm-3 col-md-1">Zip-Code</label>
-
-                        <div class="col-sm-6 col-md-4">
-
-                            <input type="text" ng-model="zip"
-                                   class="form-control col-sm-6 col-md-4"
-                                   id="zip" placeholder="0000">
-
-                        </div>
-
-                    </div> -->
-
-                    <div class="form-group">
 
                         <label for="exampleInputEmail1" class="col-sm-4 col-md-1">Email</label>
 
@@ -150,6 +121,7 @@
                         </div>
 
                     </div>
+
 
                 </div>
 
@@ -193,19 +165,19 @@
                     <div class="col-md-2">
                         <div class="radio">
                             <label>
-                                <input type="radio" checked>Free Member
+                                <input type="radio" ng-model="membership" value="free">Free Member
                             </label>
                         </div>
 
                         <div class="radio">
                             <label>
-                                <input type="radio">Regular Member
+                                <input type="radio" ng-model="membership" value="regular">Regular Member
                             </label>
                         </div>
 
                         <div class="radio">
                             <label>
-                                <input type="radio" >Premium Member
+                                <input type="radio" ng-model="membership" value="premium">Premium Member
                             </label>
                         </div>
                     </div>
@@ -213,8 +185,14 @@
                 </div>
 
                 <div class="row profile">
-                    <h4 class="page-header">My Games</h4>
+                    <h4 class="page-header">Games & Friends</h4>
                     <a href="#/mygames">Wish List</a>
+                    &nbsp;
+                    <a href="#/following">People you Follow</a>
+                    &nbsp;
+                    <a href="#/canRent">List Games For Rent</a>
+                    &nbsp;
+                    <a href="#/wantToRent">Games You Rented</a>
                 </div>
 
 

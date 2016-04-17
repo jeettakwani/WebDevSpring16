@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="GameRental">
+<head>
+    <meta charset="UTF-8">
+    <title>LIst OF Game To REnt</title>
+</head>
+<body>
+<div class="container-fluid" ng-controller="RentController">
+    <div class="row">
+        <h1 class="page-header">List Of Games To Rent</h1>
+
+        <a class="btn btn-info pull-right" href="#/searchUsers">Add Games</a>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+            <tr>
+                <td><i class="glyphicon glyphicon-triangle-bottom"></i> Friends You Follow</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="game in games">
+                <td>{{game.tittle}}</td>
+                <td>
+                    <button ng-click="removeGame($index)" class="btn btn-danger">Remove</button>
+
+                    <button ng-click="edit($index)" class="btn btn-info">Edit</button>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

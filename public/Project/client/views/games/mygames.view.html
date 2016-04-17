@@ -19,27 +19,14 @@
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr>
-                    <td><input ng-model="gameName" type="text" placeholder="Game"></td>
-
-                    <td>
-                        <button class="btn btn-primary" ng-click="addGame()">
-                            Add
-                        </button>
-
-                        <button class="btn btn-info" ng-click="update()">
-                            Update
-                        </button>
-                    </td>
-
-                </tr>
                 <tr ng-repeat="game in games">
-                    <td>{{game.title}}</td>
+                    <td>{{game.tittle}}</td>
                     <td>
                         <button ng-click="removeGame($index)" class="btn btn-danger">Remove</button>
 
-                        <button ng-click="selectGame($index)" class="btn btn-info">Select</button>
+                        <button ng-show="user.membership == 'regular' ||
+                                         user.membership == 'premium'"
+                                ng-click="selectGame($index)" class="btn btn-info">Rent</button>
                     </td>
 
                 </tr>

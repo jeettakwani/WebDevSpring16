@@ -47,8 +47,8 @@
             return $http.post('/api/project/user/'+userId+'/game',game);
         }
 
-        function findAllGamesForUser(userId) {
-            return $http.get('/api/project/user/'+userId+'/game');
+        function findAllGamesForUser(id) {
+            return $http.get('/api/project/user/'+id+'/game');
         }
 
         function deleteGameById(id) {

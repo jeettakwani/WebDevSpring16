@@ -10,12 +10,17 @@ var games = require('./game.mock.json');
 var http = require('http');
 var querystring = require('querystring');
 
-module.exports = function ($http) {
+var q = require('q');
+
+module.exports = function (db,mongoose) {
     var request = require('request');
 
     "use strict";
 
     var uuid = require('node-uuid');
+    var GameSchema = require("./game.schema.server.js")(mongoose);
+    var GameModel = mongoose.model('Game', GameSchema);
+
     var baseUrl = "http://www.giantbomb.com/api";
     var apiKey = "33a4f5bd73d5408c13b6da96c011da9b2f635bb8";
 
@@ -64,34 +69,58 @@ module.exports = function ($http) {
         });*/
     }
 
-    function createGameForUSer(userId, game) {
-        games.userId = userId;
-        games.push(game);
-        return games;
+    function createGameForUSer(id,game) {
+        var deferred = q.defer();
+        
+        GameModel.create(game,function(err,doc)
+        {
+            if(err)
+            {
+                deferred.reject(err);
+            }
+            else
+            {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function findAllGamesForUser(userId)
     {
-        var userGame = [];
-        for(var g in games) {
-            if(games[g].userId == userId)
+        var deferred = q.defer();
+
+        GameModel.find({userId : userId},function(err,doc)
+        {
+            if(err)
             {
-                userGame.push(games[g]);
+                deferred.reject(err);
             }
-        }
-        return userGame;
+            else
+            {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function deleteGameById(gameId)
     {
-        var game;
-        for(game in games) {
-            if(games[game]._id == gameId) {
-                games.splice(game,1);
-                return games;
+        var deferred = q.defer();
+
+        GameModel.remove({_id : gameId},function(err,doc)
+        {
+            if(err)
+                deferred.reject(err);
+            else
+            {
+                deferred.resolve(doc);
             }
-        }
-        return null;
+        });
+
+        return deferred.promise;
     }
 
     function updateGameById(gameId, newGame) {

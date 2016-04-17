@@ -18,33 +18,37 @@
             updateUser: updateUser,
             findAllUsers: findAllUsers,
             findUserByCredentials: findUserByCredentials,
-            findUserByUsername: findUserByUsername
+            findUserByUsername: findUserByUsername,
+            findAllUsersForUser: findAllUsersForUser,
+            findUserByName: findUserByName,
+            addFollower: addFollower,
+            deleteFriendById:deleteFriendById
         };
 
         return service;
 
         function login(user) {
-            return $http.post('api/project/login',user);
+            return $http.post('/api/project/login',user);
         }
 
         function register(user) {
-            return $http.post('api/project/register',user);
+            return $http.post('/api/project/register',user);
         }
 
         function logout() {
-            return $http.post('api/project/logout');
+            return $http.post('/api/project/logout');
         }
 
         function createUser(user) {
             return $http.post('/api/project/user', user);
         }
 
-        function deleteUserById(userId) {
-            return $http.delete('/api/project/user/' + userId);
+        function deleteUserById(id) {
+            return $http.delete('/api/project/user/' + id);
         }
 
-        function updateUser(userId, user) {
-            return $http.put('/api/project/user/'+ userId, user);
+        function updateUser(id, user) {
+            return $http.put('/api/project/user/'+ id, user);
         }
 
         function findAllUsers() {
@@ -59,6 +63,22 @@
 
         function findUserByUsername(username) {
             return $http.get('/api/project/user?username=' + username);
+        }
+
+        function findAllUsersForUser(userId) {
+            return $http.get('/api/project/'+ userId +'/following');
+        }
+
+        function findUserByName(name) {
+            return $http.get('/api/project/user?name='+name);
+        }
+
+        function addFollower(user, id) {
+            return $http.post('/api/project/user/'+ id + '/follower', user);
+        }
+
+        function deleteFriendById(id) {
+            return $http.delete('/api/project/user/following/' + id)
         }
     }
 })();

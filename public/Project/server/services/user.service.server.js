@@ -1,6 +1,12 @@
 /**
  * Created by jtakwani on 3/25/16.
  */
+
+var passport         = require('passport');
+var LocalStrategy    = require('passport-local').Strategy;
+var mongoose         = require("mongoose");
+
+
 module.exports = function (app, model) {
     "use strict";
 
@@ -12,15 +18,17 @@ module.exports = function (app, model) {
             findUserByCredentials(req, res);
         } else if (req.query.username && !req.query.password) {
             findUserByUsername(req, res);
+        } else if (req.query.name) {
+            getUsersByName(req, res);
         }
         else {
             next();
         }
     });
 
-    app.post('api/project/login', passport.authenticate('local'), login);
+    app.post('/api/project/login', passport.authenticate('local'), login);
 
-    app.post('api/project/logout',      logout);
+    app.post('/api/project/logout',      logout);
 
     app.post('/api/project/register',   register);
 
@@ -35,6 +43,12 @@ module.exports = function (app, model) {
     app.put('/api/project/user/:id',    updateUser);
 
     app.delete('/api/project/user/:id', deleteUser);
+    
+    app.get('/api/project/:id/following', getUsersForUser);
+
+    app.post('/api/project/user/:id/follower', addFollower);
+
+    app.delete('/api/project/user/following/:id', deleteFriendForUser);
 
 
     passport.use(new LocalStrategy(localStrategy));
@@ -225,10 +239,10 @@ module.exports = function (app, model) {
     }
 
     function updateUser(req, res) {
-        var id = req.params.userId;
+        var id = req.params.id;
         var user = req.body;
 
-        if(!isAdmin(req.user)) {
+        if(!isAdmin(user)) {
             delete user.roles;
         }
         if(typeof user.roles == "string") {
@@ -264,5 +278,63 @@ module.exports = function (app, model) {
             res.status(403);
         }
     }
+    
+    function getUsersForUser(req, res) {
+        var id = req.params.id;
+        
+        model.findUsersForUser(id)
+            .then(
+                function(users) {
+                    res.json(users);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
 
+    function getUsersByName(req, res) {
+        var name = req.query.name;
+
+        model.findUsersByName(name)
+            .then(
+                function(users) {
+                    res.json(users);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function addFollower(req, res) {
+        var id = req.params.id;
+        var user = req.body;
+
+        var following = {following:user._id, follower:id, following_firstname: user.firstname,
+        following_lastname:user.lastName};
+
+        model.addFollower(id,following)
+            .then(
+                function(users) {
+                    res.json(users);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function deleteFriendForUser(req, res) {
+        var id = req.params.id;
+        model.deleteFriendById(id)
+            .then(
+                function (doc) {
+                    res.json(doc)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
 };
