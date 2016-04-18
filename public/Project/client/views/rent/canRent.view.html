@@ -9,7 +9,7 @@
     <div class="row">
         <h1 class="page-header">List Of Games To Rent</h1>
 
-        <a class="btn btn-info pull-right" href="#/searchUsers">Add Games</a>
+        <a class="btn btn-info pull-right" href="#/addGamesForRentForms">Add Games</a>
         <table class="table table-bordered table-striped table-responsive">
             <thead>
             <tr>
@@ -18,12 +18,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="game in games">
+            <tr ng-repeat="game in availableRentGames">
                 <td>{{game.tittle}}</td>
                 <td>
                     <button ng-click="removeGame($index)" class="btn btn-danger">Remove</button>
 
-                    <button ng-click="edit($index)" class="btn btn-info">Edit</button>
+                    <a href="#/addGamesForRentForms/{{game._id}}" class="btn btn-info">Edit</a>
                 </td>
 
             </tr>

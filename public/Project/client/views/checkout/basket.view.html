@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link href="css/custom.css" rel="stylesheet">
+    <script src="javascript/customjs.js"></script>
+</head>
+
+<body>
+
+<div class="container text-center" ng-controller="CheckoutController">
+    <ol class="breadcrumb">
+        <li class="active"><a href="#">Order</a></li>
+    </ol>
+    <div class="col-md-5 col-sm-12">
+        <div class="bigcart"></div>
+        <h1>Your shopping cart</h1>
+        <p>
+            This is Your shopping cart.
+        </p>
+    </div>
+
+    <div class="col-md-7 col-sm-12 text-left">
+        <ul>
+            <li class="row list-inline columnCaptions">
+                <span>ITEM</span>
+                <span>Time</span>
+                <span>Action</span>
+                <span>Price</span>
+            </li>
+            <li class="row list-inline columnCaptions">
+                <span>{{item.tittle}}</span>
+                <span>{{item.availableFor}}</span>
+                <span class="glyphicon glyphicon-remove"></span>
+                <span>{{item.price}}</span>
+            </li>
+            <li class="row totals">
+                <span class="itemName">Total:</span>
+                <span class="price">{{item.price}}</span>
+                <span class="order" ng-click="order()"> <a class="text-center">ORDER</a></span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

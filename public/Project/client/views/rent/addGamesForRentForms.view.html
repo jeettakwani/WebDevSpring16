@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="GameRental">
+<head>
+    <title>Profile</title>
+
+</head>
+
+<body>
+
+
+<div class="container-fluid" ng-controller="RentController">
+    <h1>Profile</h1>
+    <form class="form-horizontal profile-form">
+
+        <h4 class="page-header">Game Information</h4>
+
+        <div class="row profile col-sm-12">
+
+            <div class="form-group">
+
+                <label for="gameName" class="label-control col-sm-4 col-md-1">Game Name</label>
+
+
+                <div class="col-sm-6 col-md-4">
+
+                    <input ng-model="gameName" type="text"
+                           class="form-control col-sm-6 col-md-4"
+                           id="gameName" placeholder="Game Name">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="platform" class="label-control col-sm-4 col-md-1">Platform</label>
+
+                <div class="col-sm-6 col-md-4">
+
+                    <input ng-model="platform" type="text"
+                           class="form-control col-sm-6 col-md-4"
+                           id="platform" placeholder="PC, PS, XBOX...">
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="price" class="label-control col-sm-4 col-md-1">Price</label>
+
+                <div class="col-sm-6 col-md-4">
+
+                    <input  ng-model="price" type="text"
+                            class="form-control col-sm-6 col-md-4"
+                            id="price" placeholder="$">
+
+                </div>
+
+            </div>
+
+            <!-- <div class="form-group">
+
+                <label for="usedFor" class="label-control col-sm-4 col-md-1">Used For</label>
+
+                <div class="col-sm-6 col-md-4">
+
+                    <input type="text" ng-model="usedFor"
+                           class="form-control col-sm-6 col-md-4"
+                           id="usedFor" placeholder="weeks, months">
+
+                </div>
+
+            </div> -->
+
+            <div class="form-group">
+
+                <label for="usedFor" class="label-control col-sm-4 col-md-1">Used For</label>
+                <div class="col-sm-6 col-md-4">
+                <select style="border:none" ng-model="usedFor" id="usedFor" class="form-control" title="Used For">
+                    <option value="1 Week">1 week</option>
+                    <option value="2 Weeks">2 weeks</option>
+                    <option value="3 Weeks">3 weeks</option>
+                    <option value="4 Weeks">4 weeks</option>
+                    <option value="1 Month - 3 Months">1 Month - 3 Months</option>
+                    <option value="1 Year">1 Year</option>
+                    <option value="1-2 Years">1-2 Years</option>
+                    <option value="More Than 2 years"> > 2 Years</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="availableFor" class="label-control col-sm-4 col-md-1">Available For</label>
+
+                <div class="col-sm-6 col-md-4">
+                <select style="border:none" ng-model="availableFor" id="availableFor" class="form-control" title="available For">
+                    <option value="1 Week">1 week</option>
+                    <option value="2 Weeks">2 weeks</option>
+                    <option value="3 Weeks">3 weeks</option>
+                    <option value="4 Weeks">4 weeks</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="2 Month">2 Months</option>
+                    <option value="3 Month">3 Months</option>
+                    <option value="4 Month">4 Months</option>
+                    <option value="6 Month">6 Months</option>
+
+                </select>
+                </div>
+            </div>
+
+            <!--<div class="form-group">
+
+                <label for="zip" class="label-control col-sm-4 col-md-1">Zip-Code</label>
+
+                <div class="col-sm-6 col-md-4">
+
+                    <input type="text" ng-model="zip"
+                           class="form-control col-sm-6 col-md-4"
+                           id="zip" placeholder="0000">
+
+                </div>
+                </div>
+
+            <div class="form-group">
+
+                <label for="exampleInputEmail1" class="col-sm-4 col-md-1">Email</label>
+
+                <div class="col-sm-6 col-md-4">
+
+                    <input type="email" ng-model="email"
+                           class="form-control col-sm-6 col-md-4"
+                           id="exampleInputEmail1" placeholder="Email">
+
+                </div>
+
+            </div>-->
+
+
+        </div>
+
+        <div class="row col-xs-offset-8 col-md-4">
+            <a ng-click="addGameForRent()"  ng-show="addButton"
+               class="btn btn-success  col-md-offset-9 col-sm-6  col-md-4">Add</a>
+
+            <a ng-click="edit()"  ng-show="editButton"
+               class="btn btn-success  col-md-offset-4 col-sm-6  col-md-4">Edit</a>
+
+            <a href="#/canRent" ng-show="editButton" class="btn btn-danger  col-sm-6  col-md-4">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

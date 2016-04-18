@@ -81,6 +81,30 @@
                     templateUrl: "views/search/searchUsers.view.html",
                     controller: "SearchController"
                 })
+                .when("/canRent", {
+                    templateUrl: "views/rent/canRent.view.html",
+                    controller: "RentController"
+                })
+                .when("/addGamesForRentForms", {
+                    templateUrl: "views/rent/addGamesForRentForms.view.html",
+                    controller: "RentController"
+                })
+                .when("/addGamesForRentForms/:_id", {
+                    templateUrl: "views/rent/addGamesForRentForms.view.html",
+                    controller: "RentController"
+                })
+                .when("/gamesRented", {
+                    templateUrl: "views/rent/gamesRented.view.html",
+                    controller: "RentController"
+                })
+                .when("/rentGames", {
+                    templateUrl: "views/rent/rentGames.view.html",
+                    controller: "RentController"
+                })
+                .when("/basket/:id", {
+                    templateUrl: "views/checkout/basket.view.html",
+                    controller: "CheckoutController"
+                })
                 .otherwise({
                     redirectTo: "/"
                 });

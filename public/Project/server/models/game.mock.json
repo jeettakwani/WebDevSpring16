@@ -1,8 +1,0 @@
-[
-{"_id": 0, "title": "Fifa14", "userId": 123},
-{"_id": 10, "title": "Fifa15",  "userId": 123},
-{"_id": 20, "title": "Cricket12", "userId": 234},
-{"_id": 30, "title": "Cricket14", "userId": 234},
-{"_id": 40, "title": "Mortal Combat", "userId": 234},
-{"_id": 50, "title": "Street Fighter", "userId": 456}
-]

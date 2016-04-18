@@ -6,7 +6,6 @@
  * Created by jtakwani on 3/4/16.
  */
 
-var games = require('./game.mock.json');
 var http = require('http');
 var querystring = require('querystring');
 
@@ -71,7 +70,7 @@ module.exports = function (db,mongoose) {
 
     function createGameForUSer(id,game) {
         var deferred = q.defer();
-        
+
         GameModel.create(game,function(err,doc)
         {
             if(err)
