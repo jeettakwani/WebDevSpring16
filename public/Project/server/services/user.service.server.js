@@ -5,9 +5,9 @@
 var passport         = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
 var mongoose         = require("mongoose");
+var bcrypt = require('bcrypt-nodejs');
 
-
-module.exports = function (app, model) {
+module.exports = function (app, model, userModel) {
     "use strict";
 
     var uuid = require('node-uuid');
@@ -26,7 +26,9 @@ module.exports = function (app, model) {
         }
     });
 
-    app.post('/api/project/login', passport.authenticate('local'), login);
+    app.post('/api/assignment/login', passport.authenticate('assignment'), login);
+
+    app.post('/api/project/login', passport.authenticate('project'), login);
 
     app.post('/api/project/logout',      logout);
 
@@ -51,39 +53,98 @@ module.exports = function (app, model) {
     app.delete('/api/project/user/following/:id', deleteFriendForUser);
 
 
-    passport.use(new LocalStrategy(localStrategy));
+    passport.use('assignment',new LocalStrategy(assignLocalStrategy));
+    passport.use('project',new LocalStrategy(projectLocalStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    function localStrategy(username, password, done) {
-        model
-            .findUserByCredentials(username, password)
-            .then(
-                function(user) {
-                    if (!user) { return done(null, false); }
-                    return done(null, user);
-                },
-                function(err) {
-                    if (err) { return done(err); }
+    function assignLocalStrategy(username,password,done)
+    {
+        //userModel.findUserByCredentials(username,password).then(
+        userModel.findUserByUsername(username).then(
+            function(user)
+            {
+                if(!user)
+                {
+                    return done(null,false);
                 }
-            );
+                else
+                {
+                    console.log(user);
+                    if(user && bcrypt.compareSync(password,user.password)) {
+                        console.log("in compare sync");
+                        return done(null, user);
+                    }
+                }
+            },
+            function(err)
+            {
+                if(err)
+                {
+                    return done(err);
+                }
+            }
+        );
+    }
+
+
+    function projectLocalStrategy(username,password,done)
+    {
+        //userModel.findUserByCredentials(username,password).then(
+        model.findUserByUsername(username).then(
+            function(user)
+            {
+                if(!user)
+                {
+                    return done(null,false);
+                }
+                else
+                {
+                    console.log(user);
+                    if(user && bcrypt.compareSync(password,user.password)) {
+                        console.log("in compare sync");
+                        return done(null, user);
+                    }
+                }
+            },
+            function(err)
+            {
+                if(err)
+                {
+                    return done(err);
+                }
+            }
+        );
     }
 
     function serializeUser(user, done) {
         done(null, user);
     }
 
-    function deserializeUser(user, done) {
-        model
-            .findUserById(user._id)
-            .then(
-                function(user){
+    function deserializeUser(user,done)
+    {
+        if(user.type == 'assignment') {
+            console.log("in check for assignment");
+            userModel.findUserById(user._id).then(
+                function (user) {
                     done(null, user);
                 },
-                function(err){
+                function (err) {
                     done(err, null);
                 }
             );
+        }
+        else if(user.type == 'project') {
+            console.log("in check for project");
+            model.findUserById(user._id).then(
+                function (user) {
+                    done(null, user);
+                },
+                function (err) {
+                    done(err, null);
+                }
+            );
+        }
     }
 
     function login(req, res) {
@@ -106,6 +167,7 @@ module.exports = function (app, model) {
 
     function register(req, res) {
         var newUser = req.body;
+        newUser.password = bcrypt.hashSync(req.body.password);
         newUser.roles = ['user'];
 
         model

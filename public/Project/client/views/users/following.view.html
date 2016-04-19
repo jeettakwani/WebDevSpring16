@@ -9,6 +9,17 @@
     <div class="row">
             <h1 class="page-header">Following</h1>
 
+        <div>
+            <ul class="nav nav-tabs nav-justified">
+                <li ><a href="#/profile">Profile</a></li>
+                <li > <a href="#/mygames">Wish List</a></li>
+                <li class="active"><a href="#/following">People you Follow</a></li>
+                <li><a href="#/canRent">List Games For Rent</a></li>
+                <li><a href="#/gameRented">Games You Rented</a></li>
+                <li><a href="#/rentGames">Rent Games</a></li>
+            </ul>
+        </div>
+
             <a class="btn btn-info pull-right" href="#/searchUsers">Search Users</a>
             <table class="table table-bordered table-striped table-responsive">
                 <thead>
@@ -19,7 +30,8 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="friend in friends">
-                    <td>{{friend.following_firstname}}</td>
+                    <td><a href="#/friendProfile/{{friend.following_firstname}}">
+                        {{friend.following_firstname}}</a></td>
                     <td>
                         <button ng-click="removeFriend($index)" class="btn btn-danger">Unfollow</button>
 

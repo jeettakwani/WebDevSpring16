@@ -41,7 +41,7 @@
                 })
                 .when("/login", {
                     templateUrl: "views/users/login.view.html",
-                    controller : "LoginController"
+                    controller : "HomeController"
 
                 })
                 .when("/pricing", {
@@ -54,6 +54,10 @@
                 })
                 .when("/search", {
                     templateUrl: "views/search/search.view.html",
+                    controller: "SearchController"
+                })
+                .when("/searchResults/:gameName", {
+                    templateUrl: "views/search/gameSearchResult.view.html",
                     controller: "SearchController"
                 })
                 .when("/detail/:id", {
@@ -75,6 +79,14 @@
                 })
                 .when("/following", {
                     templateUrl: "views/users/following.view.html",
+                    controller: "FollowerController"
+                })
+                .when("/friendProfile/:following_firstname", {
+                    templateUrl: "views/users/friendProfile.view.html",
+                    controller: "FollowerController"
+                })
+                .when("/friendsReview/:username", {
+                    templateUrl: "views/users/friendReview.view.html",
                     controller: "FollowerController"
                 })
                 .when("/searchUsers", {
@@ -101,12 +113,86 @@
                     templateUrl: "views/rent/rentGames.view.html",
                     controller: "RentController"
                 })
+                .when("/rentGames/:gameName", {
+                    templateUrl: "views/rent/rentGames.view.html",
+                    controller: "RentController"
+                })
                 .when("/basket/:id", {
                     templateUrl: "views/checkout/basket.view.html",
                     controller: "CheckoutController"
+                })
+                .when("/success", {
+                    templateUrl: "views/checkout/success.view.html"
+                })
+                .when("/reviews", {
+                    templateUrl: "views/users/reviews.view.html"
                 })
                 .otherwise({
                     redirectTo: "/"
                 });
         });
+
+    var checkAdmin = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+
+        $http.get('/api/assignment/loggedin').success(function(user)
+        {
+            $rootScope.errorMessage = null;
+            // User is Authenticated
+            if (user !== '0' && user.roles.indexOf('admin') != -1)
+            {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+        });
+
+        return deferred.promise;
+    };
+
+
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+
+        $http.get('/api/assignment/loggedin').success(function(user)
+        {
+            $rootScope.errorMessage = null;
+            // User is Authenticated
+            console.log(user);
+            if (user !== '0')
+            {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+            // User is Not Authenticated
+            else
+            {
+                $rootScope.errorMessage = 'You need to log in.';
+                deferred.reject();
+                $location.url('/login');
+            }
+        });
+
+        return deferred.promise;
+    };
+
+    var checkCurrentUser = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+
+        $http.get('/api/assignment/loggedin').success(function(user)
+        {
+            $rootScope.errorMessage = null;
+            // User is Authenticated
+            if (user !== '0')
+            {
+                $rootScope.currentUser = user;
+            }
+            deferred.resolve();
+        });
+
+        return deferred.promise;
+    };
+
 })();

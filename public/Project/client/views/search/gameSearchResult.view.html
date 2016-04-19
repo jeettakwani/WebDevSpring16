@@ -1,0 +1,21 @@
+<div class="search container table-responsive">
+    <h3 ng-if="data.results">Search Results</h3>
+
+    <div class="panel panel-default" ng-repeat="game in data.results">
+        <div class="panel-body">
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#/detail/{{game.id}}">
+                        <img height="100px" ng-src="{{game.image.icon_url}}"/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="#/detail/{{game.id}}">{{game.name}}</a></h4>
+                    <p>{{game.deck}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

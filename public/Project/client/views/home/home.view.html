@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="GameRental">
-<head>
-</head>
+<html lang="en">
 
+<body>
+<div class="container">
 
-<div class="home col-sm-6 col-md-6" ng-controller="HomeController">
+    <!-- Heading Row -->
+    <div class="row">
+        <div class="col-md-8">
+            <img src="images/ps-xbox-pc.jpg" class="img-responsive img-rounded">
+        </div>
+        <!-- /.col-md-8 -->
+        <div class="col-md-4">
+            <h1>GameSwap</h1>
+            <p>Welcome to place where you can find any game, rent any game or better give your own game
+                for rent and earn some money. Find your friends, follow them and share games and much more.
+                Register now</p>
+            <a class="btn btn-primary btn-lg" href="#/register">Register!</a>
+        </div>
+        <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
 
-    <h1>Login</h1>
+    <hr>
 
-            <form class="form-horizontal">
+    <!-- Call to Action Well -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well text-center">
+                Find out some more information below!
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
 
-                <div class="form-group">
-                    <label for="userName" class="label-control col-sm-6 col-md-4 text-right">Username</label>
-                    <div class="col-sm-6 col-md-6">
-                        <input ng-model="username" type="text" class="form-control" id="userName" placeholder="Username">
-                    </div>
-                </div>
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Search & Read</h2>
+            <p>We certainly dont want to tie you down with registrations, if you are just looking to find games and read
+            the latest revies about them. You can search as many games you like. Just click the button below</p>
+            <a class="btn btn-success" href="#/search">Search</a>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4">
+            <h2>Luxurious features</h2>
+            <p>
+                Want to do more than just search games and read reviews, well you have come to right place.
+                Pay a small amount each month enjoy features like renting games from others and much more, So register now
+            </p>
+            <a class="btn btn-primary" href="#/register">Register</a>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4">
+            <h2>About Us</h2>
+            <p>Not sure who we are and what we do.Here is a link to know something about us.You can also checkout
+            some of our features by clicking on features in the header.</p>
+            <a class="btn btn-info" href="#/about">About Us</a>
+        </div>
+        <!-- /.col-md-4 -->
+    </div>
 
-                <div class="form-group">
-                    <label for="inputPassword" class="col-sm-6 col-md-4 text-right">Password</label>
-                    <div class="col-sm-6 col-md-6">
-                        <input ng-model="password" type="password" class="form-control col-sm-6 col-md-6" id="inputPassword" placeholder="password">
-                    </div>
-                </div>
-                <div class="row">
-
-                    <fieldset class="form-inline col-xs-offset-1 col-sm-offset-6 col-sm-6 col-md-offset-4 col-md-6">
-                        <div class="input-group">
-
-                    <button ng-click="login()" class="btn btn-primary ">
-                        Login
-                    </button>
-                        |
-                    <button ng-click="goToRegister()" class="btn btn-info ">
-                        Register
-                    </button>
-                        </div>
-                    </fieldset>
-                </div>
-            </form>
 </div>
 
-<div class="container-image col-sm-6 col-md-offset-1 col-md-5 hidden-xs">
-
-</div>
-
+</body>
 </html>
+<!-- /.container -->

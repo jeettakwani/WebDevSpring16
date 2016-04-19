@@ -37,6 +37,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 app.get('/hello', function(req, res){
     res.send('hello world');
 });
-require('./public/Assignments/server/javascript/app.js')(app, db, mongoose);
-require('./public/Project/server/javascript/app.js')(app, db, mongoose);
+//require('./public/Assignments/server/javascript/app.js')(app, db, mongoose);
+//require('./public/Project/server/javascript/app.js')(app, db, mongoose);
+require('./public/app.js')(app, db, mongoose);
 app.listen(port, ipaddress);

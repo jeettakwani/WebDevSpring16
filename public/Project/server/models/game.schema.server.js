@@ -5,6 +5,7 @@
 module.exports = function(mongoose) {
 // use mongoose to declare a user schema
     var GameSchema = mongoose.Schema({
+        gameId: String,
         tittle: String,
         year: String,
         price: String,

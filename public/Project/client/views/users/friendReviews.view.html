@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1>{{profile.username}}</h1>
+
+        <div class="row">
+            <div class="text-muted text-right">
+
+                <p><a ng-click="follow()" ng-hide="rootScope.user==null" class="btn btn-lg btn-success">
+                    Follow <i class="glyphicon glyphicon-plus-sign"></i></a></p>
+            </div>
+
+        </div>
+
+
+        <div>
+            <ul class="nav nav-tabs nav-justified">
+                <li><a class="white" href="#/friendProfile/{{profile.username}}">{{profile.username}}'s Games</a></li>
+                <li class="active"><a href="#">{{profile.username}}'s Reviews</a></li>
+            </ul>
+        </div>
+
+        <div class="panel panel-default" ng-repeat="game in games">
+            <div class="panel-body">
+                <div class="media review">
+                    <div class="media-heading">
+                        <p>
+                            <a href="#/detail/{{game.gameId}}">
+                                {{game.gameName}}
+                            </a>
+                        </p>
+
+                    </div>
+                    <div class="media-body">
+                        <p>Rating: {{review.rating}} stars</p>
+                        {{review.text}}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

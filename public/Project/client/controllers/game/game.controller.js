@@ -64,7 +64,8 @@
 
         $scope.selectGame = function (index) {
             $scope.selectedGameIndex = index;
-            $scope.gameName = $scope.games[index].title;
+            $scope.gameName = $scope.games[index].tittle;
+            $location.path('/rentGames/'+$scope.gameName);
         };
 
         $scope.removeGame = function (index) {

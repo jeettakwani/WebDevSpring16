@@ -43,6 +43,7 @@
             $rootScope.user.state = "";
             $rootScope.user.zip = "";
             $rootScope.user.email = $scope.email;
+            $rootScope.user.type  = 'project';
 
             $scope.$location.path("/pricing")
         };

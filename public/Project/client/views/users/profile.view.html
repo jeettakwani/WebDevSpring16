@@ -11,6 +11,18 @@
 
 <div class="container-fluid" ng-controller="ProfileController">
     <h1>Profile</h1>
+
+    <div>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#/profile">Profile</a></li>
+            <li> <a href="#/mygames">Wish List</a></li>
+            <li><a href="#/following">People you Follow</a></li>
+            <li><a href="#/canRent">List Games For Rent</a></li>
+            <li><a href="#/gameRented">Games You Rented</a></li>
+            <li><a href="#/rentGames">Rent Games</a></li>
+            <li><a href="#/reviews">Your Reviews</a></li>
+        </ul>
+    </div>
             <form class="form-horizontal profile-form">
 
                 <h4 class="page-header">Personal</h4>
@@ -165,38 +177,24 @@
                     <div class="col-md-2">
                         <div class="radio">
                             <label>
-                                <input type="radio" ng-model="membership" value="free">Free Member
+                                <input type="radio" disabled ng-model="membership" value="free">Free Member
                             </label>
                         </div>
 
                         <div class="radio">
                             <label>
-                                <input type="radio" ng-model="membership" value="regular">Regular Member
+                                <input type="radio" disabled ng-model="membership" value="regular">Regular Member
                             </label>
                         </div>
 
                         <div class="radio">
                             <label>
-                                <input type="radio" ng-model="membership" value="premium">Premium Member
+                                <input type="radio" disabled ng-model="membership" value="premium">Premium Member
                             </label>
                         </div>
                     </div>
 
                 </div>
-
-                <div class="row profile">
-                    <h4 class="page-header">Games & Friends</h4>
-                    <a href="#/mygames">Wish List</a>
-                    &nbsp;
-                    <a href="#/following">People you Follow</a>
-                    &nbsp;
-                    <a href="#/canRent">List Games For Rent</a>
-                    &nbsp;
-                    <a href="#/gameRented">Games You Rented</a>
-                    &nbsp;
-                    <a href="#/rentGames">Rent Games</a>
-                </div>
-
 
                 <div class="row col-xs-offset-8 col-md-offset-10 col-md-4">
                     <a ng-click="update()"  class="btn btn-success  col-sm-6  col-md-4">Update</a>

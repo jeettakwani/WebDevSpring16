@@ -26,7 +26,7 @@
         $scope.deleteFromListing = function (id) {
             RentService.deleteRentGameById(id)
                 .then(function(response) {
-                    $location.path('/successful')
+                    $location.path('/success')
                 });
         };
 

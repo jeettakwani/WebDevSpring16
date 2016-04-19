@@ -11,40 +11,65 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo" href="#/home"></a>
+            <a class="navbar-brand logo" href="#/profile">GameSwap</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" ng-controller="HeaderController">
 
             <ul class="nav navbar-nav navbar-right">
                 <li  ng-class="{'active' : $location.url() === '/search'}">
-                    <a href="#/search">
+                    <a href="#/search" ng-hide="rootScope.user != null" >
                         <i class="glyphicon glyphicon-search"></i> </a>
                 </li>
                 <li  ng-class="{'active' : $location.url() === '/features'}">
-                    <a href="#/features"  ng-show="rootScope.user==null">
+                    <a href="#/features">
                         Features</a>
                 </li>
 
                 <li ng-class="{'active' : $location.url() === '/login'}">
-                    <a href="#/about" ng-show="rootScope.user==null" >
-                        About
-                </a></li>
+                    <a href="#/login" ng-show="rootScope.user==null"  >
+                        Login
+                    </a>
+                </li>
 
                 <li ng-class="{'active' : $location.url() === '/profile'}">
                     <a href="#/profile" ng-hide="rootScope.user==null"  >
                     {{rootScope.user.username}}
-                </a></li>
+                </a>
+                </li>
 
                 <li ng-class="{'active' : $location.url() === '/admin'}">
-                    <a href="#/admin" ng-show="rootScope.user!=null && rootScope.user.roles.indexOf('admin')>=0">
+                    <a href="#/admin"
+                       ng-show="rootScope.user!=null && rootScope.user.roles.indexOf('admin')>=0">
                     Admin
                 </a></li>
 
-                <li class="visible-xs hidden-sm hidden-md hidden-lg"
-                    ng-class="{'active': $location.url() === '/forms'}"
-                    ng-hide="rootScope.user==null"><a href="#/forms">
-                    Forms</a>
+                <li class="dropdown" ng-show="rootScope.user!=null">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">Options
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li ng-show="rootScope.user.membership != 'free'
+                        && rootScope.user.membership != null">
+                            <a href="#/searchUsers">Search Users</a>
+                        </li>
+
+                        <li ng-show="rootScope.user.membership != 'free'
+                        && rootScope.user.membership != null">
+                            <a href="#/rentGames">Rent Games</a>
+                        </li>
+
+                        <li><a href="#/mygames">Wish List</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
                 </li>
+
                 <li><a  ng-hide="rootScope.user==null" ng-click="logout()">
                     Logout
                 </a></li>

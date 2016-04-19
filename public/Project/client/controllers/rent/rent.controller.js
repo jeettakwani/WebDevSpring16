@@ -27,6 +27,7 @@
             });
         }
 
+
         if($routeParams._id != null) {
             $scope.toggleButtons();
             console.log($routeParams._id);
@@ -59,7 +60,7 @@
                 usedFor: $scope.usedFor,
                 availableFor: $scope.availableFor,
                 userId: $scope.user._id,
-                uername: $scope.user.username,
+                username: $scope.user.username,
                 userZip: $scope.user.zip
             };
 
@@ -70,7 +71,7 @@
 
         };
 
-        $scope.edit = function (index) {
+        $scope.edit = function(index) {
 
             var newGame = {
                 tittle: $scope.gameName,
@@ -91,12 +92,12 @@
 
 
 
-        $scope.selectGame = function (index) {
+        $scope.selectGame = function(index) {
             $scope.selectedGameIndex = index;
             $scope.gameName = $scope.games[index].title;
         };
 
-        $scope.removeGame = function (index) {
+        $scope.removeGame = function(index) {
             $scope.selectedGameIndex = index;
 
             RentService.deleteRentGameById($scope.availableRentGames[index]._id)
@@ -105,7 +106,7 @@
             });
         };
         
-        $scope.search = function (gameTittle) {
+        $scope.search = function(gameTittle) {
             RentService.findAllGamesByName(gameTittle)
                 .then(
                     function (response) {
@@ -114,5 +115,8 @@
                 );
         };
 
+        if($routeParams.gameName != null) {
+            $scope.search($routeParams.gameName);
+        }
     }
 })();

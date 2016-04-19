@@ -7,7 +7,7 @@
         .module("GameRental")
         .controller("DetailController", detailController);
 
-    function detailController($scope,$rootScope, $routeParams, GameService,$sce) {
+    function detailController($scope,$rootScope, $routeParams, GameService,$sce, ReviewService) {
         //var NewDetails;
         $scope.rootScope = $rootScope;
         $scope.gameId = $routeParams.id;
@@ -29,7 +29,7 @@
                 platformsArray.push($scope.game.results.platforms[plat].name);
             }
 
-            var gameDetail = {tittle:$scope.game.results.name,
+            var gameDetail = {gameId:$scope.gameId,tittle:$scope.game.results.name,
                 year:$scope.game.results.original_release_date,price:'$',
                 platforms:platformsArray, userId:$scope.rootScope.user._id};
 
@@ -43,6 +43,46 @@
                 });
 
             $scope.$location.path("/mygames")
+
+        };
+
+        $scope.showReview = false;
+
+        $scope.toggleReview = toggleReview;
+
+        function toggleReview(){
+            $scope.showReview = !$scope.showReview;
+        }
+
+        ReviewService.findAllReviewsForGame($scope.gameId).then(
+            function (response) {
+                $scope.reviews = response.data;
+            }
+        );
+
+        $scope.addReview = function () {
+            "use strict";
+            var newReview =
+            {
+                gameName: $scope.game.results.name,
+                gameId: $scope.gameId,
+                userId: $rootScope.user._id,
+                username: $rootScope.user.username,
+                text: $scope.review.body,
+                rating: $scope.review.stars
+            };
+
+            var userId = $rootScope.user._id;
+
+            ReviewService.createReview(newReview).then(function (response) {
+                ReviewService.findAllReviewsForGame($scope.gameId).then(
+                    function (response) {
+                        $scope.reviews = response.data;
+                        $scope.review = {};
+                    }
+                );
+
+            });
 
         };
 

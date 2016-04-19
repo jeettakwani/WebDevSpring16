@@ -18,7 +18,8 @@ module.exports = function(mongoose) {
         membership: String,
         roles: [String],
         points:Number,
-        gameList:[String]
+        gameList:[String],
+        type: String
     }, {collection: 'project_User'});
     return UserSchema;
 };

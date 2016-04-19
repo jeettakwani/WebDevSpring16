@@ -17,7 +17,6 @@
         }
 
         function search(gameName) {
-            //$location.url("/search/" + $scope.gameName);
             console.log(gameName);
             GameService.findGameByTitle(gameName).then(function (response) {
                     console.log(response);

@@ -32,13 +32,17 @@ module.exports = function (app, model) {
 
     app.delete('/api/assignment/admin/user/:id', deleteUser);
 
-    app.post('/api/assignment/login', passport.authenticate('local'), login);
+    app.post  ('/api/assignment/register',       register);
 
     app.post('/api/assignment/logout',         logout);
 
-    app.post  ('/api/assignment/register',       register);
 
     app.get   ('/api/assignment/loggedin',       loggedin);
+
+    /*
+    app.post('/api/assignment/login', passport.authenticate('local'), login);
+
+
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -78,11 +82,11 @@ module.exports = function (app, model) {
     function login(req, res) {
         var user = req.user;
         res.json(user);
-    }
+    }*/
 
     function loggedin(req, res) {
         if(req.isAuthenticated()){
-          res.send(req.user);  
+            res.send(req.user);
         }else {
             res.send('0');
         }
