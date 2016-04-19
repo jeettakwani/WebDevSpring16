@@ -25,8 +25,15 @@
                 console.log(response.data);
                 $scope.availableRentGames = response.data;
             });
+
         }
 
+        if($rootScope.user != null) {
+            RentService.findRentedGamesByUser($scope.user._id).then(function(response){
+                console.log(response.data);
+                $scope.RentedGames = response.data;
+            });
+        }
 
         if($routeParams._id != null) {
             $scope.toggleButtons();

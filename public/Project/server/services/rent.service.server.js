@@ -19,6 +19,8 @@ module.exports = function(app,model) {
 
     app.post('/api/project/user/rent/', rentGame);
 
+    app.get('/api/project/rent/rented/:id', getAllRentedGames);
+
     function listGamesForUser(req, res) {
         var id = req.params.id;
         var game = req.body;
@@ -115,6 +117,21 @@ module.exports = function(app,model) {
 
         model
             .addGameToUsersRentedList(game)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function getAllRentedGames(req, res) {
+        var id = req.params.id;
+
+        model
+            .findRentedGamesByUser(id)
             .then(
                 function (doc) {
                     res.json(doc);

@@ -16,7 +16,8 @@
             findRentGamesByUser: findRentGamesByUser,
             findGameByID: findGameByID,
             findAllGamesByName: findAllGamesByName,
-            rentGame: rentGame
+            rentGame: rentGame,
+            findRentedGamesByUser: findRentedGamesByUser
         };
         return api;
 
@@ -46,6 +47,10 @@
 
         function rentGame(game) {
             return $http.post('/api/project/user/rent/', game);
+        }
+
+        function findRentedGamesByUser(id) {
+            return $http.get('/api/project/rent/rented/'+id);
         }
     }
 })();

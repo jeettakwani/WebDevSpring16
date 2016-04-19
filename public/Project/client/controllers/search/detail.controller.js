@@ -7,7 +7,7 @@
         .module("GameRental")
         .controller("DetailController", detailController);
 
-    function detailController($scope,$rootScope, $routeParams, GameService,$sce, ReviewService) {
+    function detailController($scope,$rootScope,$location, $routeParams, GameService,$sce, ReviewService) {
         //var NewDetails;
         $scope.rootScope = $rootScope;
         $scope.gameId = $routeParams.id;
@@ -85,6 +85,10 @@
             });
 
         };
+
+        $scope.rent = function() {
+            $location.path('/rentGames')
+        }
 
     }
 })();

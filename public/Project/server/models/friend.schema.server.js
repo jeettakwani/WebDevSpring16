@@ -7,6 +7,7 @@ module.exports = function(mongoose) {
     var FriendSchema = mongoose.Schema({
         following: String,
         follower: String,
+        following_username:String,
         following_firstname: String,
         following_lastname: String
     }, {collection: 'project_user_friends'});

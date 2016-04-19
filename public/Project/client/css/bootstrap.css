@@ -11,10 +11,17 @@ body {
   margin-top: 10px;
   margin-left: 20px;
   padding-left: 20px; !important;
-  font-family: "Yuppy SC";
+  text-align: center;
+  height: 700px;
+  width: 80px;
+  content: url("../images/transicon.png");
+}
+.brandname {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-left: 20px; !important;
   text-align: center;
 }
-
 .navbar-brand {
 
 }

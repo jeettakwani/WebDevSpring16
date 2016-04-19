@@ -13,25 +13,17 @@
                 })
                 .when("/home", {
                     templateUrl: "views/home/home.view.html"
-
                 })
                 .when("/profile", {
                     templateUrl: "views/users/profile.view.html",
-                    controller : "ProfileController"
+                    controller : "ProfileController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
 
                 })
                 .when("/admin", {
                     templateUrl: "views/admin/admin.view.html"
-
-                })
-                .when("/forms", {
-                    templateUrl: "views/forms/forms.view.html",
-                    controller : "FormController"
-
-                })
-                .when("/form-fields", {
-                    templateUrl: "views/forms/form-fields.view.html",
-                    controller : "FormController"
 
                 })
                 .when("/register", {
@@ -42,7 +34,6 @@
                 .when("/login", {
                     templateUrl: "views/users/login.view.html",
                     controller : "HomeController"
-
                 })
                 .when("/pricing", {
                     templateUrl: "views/users/pricing.view.html",
@@ -54,44 +45,74 @@
                 })
                 .when("/search", {
                     templateUrl: "views/search/search.view.html",
-                    controller: "SearchController"
+                    controller: "SearchController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/searchResults/:gameName", {
                     templateUrl: "views/search/gameSearchResult.view.html",
-                    controller: "SearchController"
+                    controller: "SearchController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/detail/:id", {
                     templateUrl: "views/search/details.view.html",
-                    controller: "DetailController"
+                    controller: "DetailController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/help", {
                     templateUrl: "views/siteInfo/help.view.html"
                 })
                 .when("/about", {
-                    templateUrl: "views/siteInfo/about.view.html"
+                    templateUrl: "views/siteInfo/about.view.html",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/features", {
-                    templateUrl: "views/siteInfo/features.view.html"
+                    templateUrl: "views/siteInfo/features.view.html",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/mygames", {
                     templateUrl: "views/games/mygames.view.html",
-                    controller: "GameController"
+                    controller: "GameController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .when("/following", {
                     templateUrl: "views/users/following.view.html",
-                    controller: "FollowerController"
+                    controller: "FollowerController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/friendProfile/:following_firstname", {
                     templateUrl: "views/users/friendProfile.view.html",
-                    controller: "FollowerController"
+                    controller: "FollowerController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
-                .when("/friendsReview/:username", {
-                    templateUrl: "views/users/friendReview.view.html",
-                    controller: "FollowerController"
+                .when("/friendReviews/:following_firstname", {
+                    templateUrl: "views/users/friendReviews.view.html",
+                    controller: "FollowerController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/searchUsers", {
                     templateUrl: "views/search/searchUsers.view.html",
-                    controller: "SearchController"
+                    controller: "SearchController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/canRent", {
                     templateUrl: "views/rent/canRent.view.html",
@@ -99,33 +120,58 @@
                 })
                 .when("/addGamesForRentForms", {
                     templateUrl: "views/rent/addGamesForRentForms.view.html",
-                    controller: "RentController"
+                    controller: "RentController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/addGamesForRentForms/:_id", {
                     templateUrl: "views/rent/addGamesForRentForms.view.html",
-                    controller: "RentController"
+                    controller: "RentController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
-                .when("/gamesRented", {
+                .when("/gameRented", {
                     templateUrl: "views/rent/gamesRented.view.html",
-                    controller: "RentController"
+                    controller: "RentController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/rentGames", {
                     templateUrl: "views/rent/rentGames.view.html",
-                    controller: "RentController"
+                    controller: "RentController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/rentGames/:gameName", {
                     templateUrl: "views/rent/rentGames.view.html",
-                    controller: "RentController"
+                    controller: "RentController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/basket/:id", {
                     templateUrl: "views/checkout/basket.view.html",
-                    controller: "CheckoutController"
+                    controller: "CheckoutController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/success", {
-                    templateUrl: "views/checkout/success.view.html"
+                    templateUrl: "views/checkout/success.view.html",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .when("/reviews", {
-                    templateUrl: "views/users/reviews.view.html"
+                    templateUrl: "views/users/reviews.view.html",
+                    controller: "ReviewsController",
+                    resolve: {
+                        loggedin: checkCurrentUser
+                    }
                 })
                 .otherwise({
                     redirectTo: "/"
@@ -136,13 +182,13 @@
     {
         var deferred = $q.defer();
 
-        $http.get('/api/assignment/loggedin').success(function(user)
+        $http.get('/api/project/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
             // User is Authenticated
             if (user !== '0' && user.roles.indexOf('admin') != -1)
             {
-                $rootScope.currentUser = user;
+                $rootScope.user = user;
                 deferred.resolve();
             }
         });
@@ -155,14 +201,14 @@
     {
         var deferred = $q.defer();
 
-        $http.get('/api/assignment/loggedin').success(function(user)
+        $http.get('/api/project/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
             // User is Authenticated
             console.log(user);
             if (user !== '0')
             {
-                $rootScope.currentUser = user;
+                $rootScope.user = user;
                 deferred.resolve();
             }
             // User is Not Authenticated
@@ -181,13 +227,13 @@
     {
         var deferred = $q.defer();
 
-        $http.get('/api/assignment/loggedin').success(function(user)
+        $http.get('/api/project/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
             // User is Authenticated
             if (user !== '0')
             {
-                $rootScope.currentUser = user;
+                $rootScope.user = user;
             }
             deferred.resolve();
         });

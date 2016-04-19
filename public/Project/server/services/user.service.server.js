@@ -4,7 +4,6 @@
 
 var passport         = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
-var mongoose         = require("mongoose");
 var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function (app, model, userModel) {
@@ -34,7 +33,7 @@ module.exports = function (app, model, userModel) {
 
     app.post('/api/project/register',   register);
 
-    app.post('/api/project/loggedin',   loggedin);
+    app.get('/api/project/loggedin',   loggedin);
     
     app.get('/api/project/user/:id',    getUserById);
 
@@ -100,7 +99,7 @@ module.exports = function (app, model, userModel) {
                 }
                 else
                 {
-                    console.log(user);
+                    //console.log(user);
                     if(user && bcrypt.compareSync(password,user.password)) {
                         console.log("in compare sync");
                         return done(null, user);
@@ -124,7 +123,7 @@ module.exports = function (app, model, userModel) {
     function deserializeUser(user,done)
     {
         if(user.type == 'assignment') {
-            console.log("in check for assignment");
+            //console.log("in check for assignment");
             userModel.findUserById(user._id).then(
                 function (user) {
                     done(null, user);
@@ -135,7 +134,7 @@ module.exports = function (app, model, userModel) {
             );
         }
         else if(user.type == 'project') {
-            console.log("in check for project");
+            //console.log("in check for project");
             model.findUserById(user._id).then(
                 function (user) {
                     done(null, user);
@@ -302,6 +301,7 @@ module.exports = function (app, model, userModel) {
 
     function updateUser(req, res) {
         var id = req.params.id;
+        //newUser.password = bcrypt.hashSync(req.body.password);
         var user = req.body;
 
         if(!isAdmin(user)) {
@@ -373,7 +373,8 @@ module.exports = function (app, model, userModel) {
         var id = req.params.id;
         var user = req.body;
 
-        var following = {following:user._id, follower:id, following_firstname: user.firstname,
+        var following = {following:user._id, follower:id, following_username:user.username,
+            following_firstname: user.firstname,
         following_lastname:user.lastName};
 
         model.addFollower(id,following)

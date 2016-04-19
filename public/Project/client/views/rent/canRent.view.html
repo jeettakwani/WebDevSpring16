@@ -14,9 +14,10 @@
                 <li ><a href="#/profile">Profile</a></li>
                 <li> <a href="#/mygames">Wish List</a></li>
                 <li><a href="#/following">People you Follow</a></li>
-                <li class="active"><a href="#/canRent">List Games For Rent</a></li>
-                <li><a href="#/gameRented">Games You Rented</a></li>
-                <li><a href="#/rentGames">Rent Games</a></li>
+                <li ng-hide="user.membership == 'free'" class="active"><a href="#/canRent">List Games For Rent</a></li>
+                <li ng-hide="user.membership == 'free'"><a href="#/gameRented">Games You Rented</a></li>
+                <li ng-hide="user.membership == 'free'"><a href="#/rentGames">Rent Games</a></li>
+                <li><a href="#/reviews">Your Reviews</a></li>
             </ul>
         </div>
 
@@ -24,7 +25,7 @@
         <table class="table table-bordered table-striped table-responsive">
             <thead>
             <tr>
-                <td><i class="glyphicon glyphicon-triangle-bottom"></i> Friends You Follow</td>
+                <td><i class="glyphicon glyphicon-triangle-bottom"></i> Games</td>
                 <td>Action</td>
             </tr>
             </thead>

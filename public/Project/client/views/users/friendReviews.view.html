@@ -5,8 +5,27 @@
         <div class="row">
             <div class="text-muted text-right">
 
-                <p><a ng-click="follow()" ng-hide="rootScope.user==null" class="btn btn-lg btn-success">
-                    Follow <i class="glyphicon glyphicon-plus-sign"></i></a></p>
+                <p>
+                    <a ng-click="followFriendUsingProfile()" ng-hide="user==null || flag"
+                       class="btn btn-lg btn-success">
+
+                        Follow
+                        <i class="glyphicon glyphicon-plus-sign">
+
+                        </i>
+                    </a>
+                </p>
+
+                <p>
+                    <a ng-click="removeFriendUsingProfile()" ng-hide="user==null || !flag"
+                       class="btn btn-lg btn-danger">
+
+                        UnFollow
+                        <i class="glyphicon glyphicon-minus-sign">
+
+                        </i>
+                    </a>
+                </p>
             </div>
 
         </div>
@@ -14,8 +33,15 @@
 
         <div>
             <ul class="nav nav-tabs nav-justified">
-                <li><a class="white" href="#/friendProfile/{{profile.username}}">{{profile.username}}'s Games</a></li>
-                <li class="active"><a href="#">{{profile.username}}'s Reviews</a></li>
+                <li>
+                    <a class="white" href="#/friendProfile/{{profile.username}}">
+                    {{profile.username}}'s Games
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">{{profile.username}}'s Reviews
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -25,14 +51,14 @@
                     <div class="media-heading">
                         <p>
                             <a href="#/detail/{{game.gameId}}">
-                                {{game.gameName}}
+                                {{game.tittle}}
                             </a>
                         </p>
 
                     </div>
                     <div class="media-body">
-                        <p>Rating: {{review.rating}} stars</p>
-                        {{review.text}}
+                        <p>Rating: {{reviews[0].rating}} stars</p>
+                        {{reviews[0].text}}
                     </div>
 
 

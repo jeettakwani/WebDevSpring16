@@ -17,9 +17,9 @@
             <li class="active"><a href="#/profile">Profile</a></li>
             <li> <a href="#/mygames">Wish List</a></li>
             <li><a href="#/following">People you Follow</a></li>
-            <li><a href="#/canRent">List Games For Rent</a></li>
-            <li><a href="#/gameRented">Games You Rented</a></li>
-            <li><a href="#/rentGames">Rent Games</a></li>
+            <li ng-hide="user.membership == 'free'"><a href="#/canRent">List Games For Rent</a></li>
+            <li ng-hide="user.membership == 'free'"><a href="#/gameRented">Games You Rented</a></li>
+            <li ng-hide="user.membership == 'free'"><a href="#/rentGames">Rent Games</a></li>
             <li><a href="#/reviews">Your Reviews</a></li>
         </ul>
     </div>
@@ -157,20 +157,6 @@
 
                     </div>
 
-
-                    <div class="form-group">
-
-                        <label for="exampleInputPassword1" class="col-sm-3 col-md-1">Password</label>
-
-                        <div class="col-sm-6 col-md-offset-1 col-md-4">
-
-                            <input ng-model="password" type="password"
-                                   class="form-control"
-                                   id="exampleInputPassword1" placeholder="Password">
-
-                        </div>
-
-                    </div>
 
                     </div>
 

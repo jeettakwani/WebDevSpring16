@@ -5,16 +5,18 @@
     "use strict";
     angular
         .module("GameRental")
-        .controller("MyReviewsController", MyReviewsController);
+        .controller("ReviewsController", ReviewsController);
 
-    function MyReviewsController($rootScope, $scope, ReviewService) {
+    function ReviewsController($rootScope, $scope, ReviewService) {
 
         $scope.rootScope = $rootScope;
-        $scope.reviews = {};
+        //$scope.reviews = {};
+        //$scope.review = {};
 
         if ($rootScope.user != null) {
             ReviewService.findAllReviewsForUser($scope.rootScope.user._id).then( function (response) {
-                $scope.reviews = response.data;
+                $rootScope.reviews = response.data;
+                console.log($scope.reviews);
             });
         }
 
@@ -25,22 +27,23 @@
 
 
             var updatedReview = {
-                text: $scope.newReview.text,
-                rating: $scope.newReview.rating
+                text: $scope.review.text,
+                rating: $scope.review.rating
             }
 
 
             ReviewService.updateReview($scope.reviews[index]._id, updatedReview).then(function (response) {
-                $scope.newReview = {};
+                $scope.review = {};
                 ReviewService.findAllReviewsForUser($scope.rootScope.user._id).then( function (response) {
-                    $scope.reviews = response.data;
+                    $rootScope.reviews = response.data;
+                    console.log($scope.reviews);
                 });
             });
         };
 
         $scope.selectReview = function (index) {
-            $scope.selectedReviewIndex = index;
-            $scope.newReview = $scope.reviews[index];
+            $rootScope.selectedReviewIndex = index;
+            $scope.review = $scope.reviews[index];
 
         }
 

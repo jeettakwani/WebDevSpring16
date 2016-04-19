@@ -16,7 +16,6 @@
         $scope.username = $scope.user.username;
         $scope.firstname = $scope.user.firstname;
         $scope.lastname = $scope.user.lastname;
-        $scope.password = $scope.user.password;
         $scope.address = $scope.user.address;
         $scope.state = $scope.user.state;
         $scope.zip = $scope.user.zip;
@@ -30,7 +29,6 @@
             user.username = this.username;
             user.firstname = this.firstname;
             user.lastname = this.lastname;
-            user.password = this.password;
             user.address = this.address;
             user.state = this.state;
             user.zip = this.zip;

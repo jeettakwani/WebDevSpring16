@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="GameRental">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid" ng-controller="RentController">
+    <h1 class="page-header">Wish List</h1>
+
+    <div>
+        <ul class="nav nav-tabs nav-justified">
+            <li ><a href="#/profile">Profile</a></li>
+            <li> <a href="#/mygames">Wish List</a></li>
+            <li><a href="#/following">People you Follow</a></li>
+            <li ng-hide="user.membership == 'free'"><a href="#/canRent">List Games For Rent</a></li>
+            <li ng-hide="user.membership == 'free'" class="active"><a href="#/gameRented">Games You Rented</a></li>
+            <li ng-hide="user.membership == 'free'"><a href="#/rentGames">Rent Games</a></li>
+            <li><a href="#/reviews">Your Reviews</a></li>
+        </ul>
+    </div>
+
+
+    <div class="panel panel-default" ng-repeat="game in RentedGames">
+        <div class="panel-body">
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <img height="100px" ng-src="images/sampleGameIcon.png"/>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{game.gameTittle}}</h4>
+                    <p>{{game.gamePlatform}}</p>
+                    <p>Rented From: {{game.gameRentedBy}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

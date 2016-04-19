@@ -24,7 +24,8 @@ module.exports = function (db,mongoose) {
         findRentGamesByUser: findRentGamesByUser,
         findGameByID: findGameByID,
         findAllGamesByGameName: findAllGamesByGameName,
-        addGameToUsersRentedList: addGameToUsersRentedList
+        addGameToUsersRentedList: addGameToUsersRentedList,
+        findRentedGamesByUser: findRentedGamesByUser
     };
     return api;
     
@@ -50,6 +51,24 @@ module.exports = function (db,mongoose) {
         var deferred = q.defer();
 
         RentModel.find({userId:id},function(err,doc)
+        {
+            if(err)
+            {
+                deferred.reject(err);
+            }
+            else
+            {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function findRentedGamesByUser(id) {
+        var deferred = q.defer();
+
+        RentedModel.find({gameRenterUserId:id},function(err,doc)
         {
             if(err)
             {

@@ -26,8 +26,7 @@
             Save
         </button>
 
-        <button
-           ng-show="rootScope.user!=null && rootScope.user.membership != 'free'"
+        <button ng-click=rent() ng-show="rootScope.user!=null && rootScope.user.membership != 'free'"
            class="btn btn-info btn-block ">
             Rent
         </button>
@@ -47,7 +46,7 @@
         <div class="media review" >
                 <div class="media-right">
 
-                        <p><a href="#/follow/{{review.username}}">{{review.username}}</a>'s rating : {{review.rating}} stars </p>
+                        <p><a href="#/friendProfile/{{review.username}}">{{review.username}}</a>'s rating : {{review.rating}} stars </p>
                     "{{review.text}}"
 
                 </div>
@@ -59,7 +58,7 @@
                 </div>
             </div>
 
-    <p>
+    <p ng-hide="rootScope.user == null">
             <a data-toggle="modal" data-target="#myModal" class="btn btn-lg btn-success">
                 <i class="glyphicon glyphicon-plus-sign"> Write a review !
                 </i>
@@ -75,53 +74,47 @@
                                 aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Add a review !</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group text-center">
+    <div class="modal-body">
+        <div class="form-group text-center">
 
-                        <form class=" form-horizontal">
+            <form class=" form-horizontal">
 
 
-                            <div>
-                                Rating:
-                            </div>
-                            <select class="form-control-lg" ng-model="review.stars">
-                                <option value="0" disabled selected>Rating</option>
-
-                                <option value="1">1 star</option>
-
-                                <option value="2">2 stars</option>
-
-                                <option value="3">3 stars</option>
-
-                                <option value="4">4 stars</option>
-
-                                <option value="5" aria-selected="true" selected>5 stars</option>
-
-                            </select>
+                <div class="edit-review">
+                    Rating:
+                </div>
+                <select class="form-control-lg" ng-model="review.stars">
+                    <option value="0" disabled selected>Rating</option> 
+                    <option value="1">1 star</option> 
+                    <option value="2">2 stars</option> 
+                    <option value="3">3 stars</option> 
+                    <option value="4">4 stars</option> 
+                    <option value="5" aria-selected="true" selected>5 stars</option> 
+                </select>
 
 
 
 
-                            <div>&nbsp;</div>
-                            
-                                Review:
-                        
-                            <textarea ng-model="review.body"/>
-                            <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div class="edit-review">
+                    Review:
+                </div>
+                <textarea ng-model="review.body"/>
+                <div>&nbsp;</div>
 
 
 
-                            <div class="text-center">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="button" ng-click="addReview()" data-dismiss="modal"
-                                                                            class="btn btn-success">Save changes
-                                </button>
-                            </div>
-                        </form>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" ng-click="addReview()" data-dismiss="modal"
+                            class="btn btn-success">Save changes
+                    </button>
+                </div>
+            </form>
 
 
-                    </div>
-                </div>
+        </div>
+    </div>
             </div>
         </div>
 </div>

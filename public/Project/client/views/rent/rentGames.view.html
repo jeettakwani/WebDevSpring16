@@ -16,9 +16,10 @@
                 <li ><a href="#/profile">Profile</a></li>
                 <li> <a href="#/mygames">Wish List</a></li>
                 <li><a href="#/following">People you Follow</a></li>
-                <li><a href="#/canRent">List Games For Rent</a></li>
-                <li><a href="#/gameRented">Games You Rented</a></li>
-                <li class="active"><a href="#/rentGames">Rent Games</a></li>
+                <li ng-hide="user.membership == 'free'"><a href="#/canRent">List Games For Rent</a></li>
+                <li ng-hide="user.membership == 'free'"><a href="#/gameRented">Games You Rented</a></li>
+                <li ng-hide="user.membership == 'free'" class="active"><a href="#/rentGames">Rent Games</a></li>
+                <li><a href="#/reviews">Your Reviews</a></li>
             </ul>
         </div>
 

@@ -5,8 +5,27 @@
         <div class="row">
             <div class="text-muted text-right">
 
-                <p><a ng-click="follow()" ng-hide="rootScope.user==null" class="btn btn-lg btn-success">
-                    Follow <i class="glyphicon glyphicon-plus-sign"></i></a></p>
+                <p>
+                    <a ng-click="followFriendUsingProfile()" ng-hide="user==null || flag"
+                       class="btn btn-lg btn-success">
+
+                        Follow
+                    <i class="glyphicon glyphicon-plus-sign">
+
+                    </i>
+                    </a>
+                </p>
+
+                <p>
+                    <a ng-click="removeFriendUsingProfile()" ng-hide="user==null || !flag"
+                       class="btn btn-lg btn-danger">
+
+                        UnFollow
+                        <i class="glyphicon glyphicon-minus-sign">
+
+                        </i>
+                    </a>
+                </p>
             </div>
 
         </div>
@@ -15,7 +34,11 @@
         <div>
             <ul class="nav nav-tabs nav-justified">
                 <li class="active"><a href="#">{{profile.username}}'s Games</a></li>
-                <li><a class="white" href="#/friendsReview/{{profile.username}}">{{profile.username}}'s Reviews</a></li>
+                <li>
+                    <a class="white" href="#/friendReviews/{{profile.username}}">
+                    {{profile.username}}'s Reviews
+                    </a>
+                </li>
             </ul>
         </div>
         <div>
@@ -30,8 +53,8 @@
 
 
                 <tr ng-repeat="game in games">
-                    <td><a href="#/detail/{{game.gameId}}">{{game.gameId}}</a></td>
-
+                    <td><a href="#/detail/{{game.gameId}}">{{game.tittle}}</a></td>
+                    <td><a href="#/detail/{{game.gameId}}">{{game.platforms}}</a></td>
                 </tr>
 
                 </tbody>

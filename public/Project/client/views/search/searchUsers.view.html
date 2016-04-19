@@ -32,15 +32,17 @@
         <tr>
             <th>Name</th>
             <th>username</th>
-            <th>Game List</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="user in users">
-            <td>{{user.firstname+" "+user.lastname}}</td>
+            <td>
+                <a class="white" href="#/friendProfile/{{user.firstname}}">
+                    {{user.firstname+" "+user.lastname}}
+                </a>
+            </td>
             <td>{{user.username}}</td>
-            <td>{{user.zip}}</td>
             <td><button ng-click="follow($index)" class="btn btn-primary">Follow</button></td>
         </tr>
         </tbody>
