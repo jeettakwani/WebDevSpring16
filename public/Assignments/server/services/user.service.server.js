@@ -1,6 +1,4 @@
-var passport         = require('passport');
-var LocalStrategy    = require('passport-local').Strategy;
-var mongoose         = require("mongoose");
+var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function (app, model) {
     "use strict";
@@ -32,12 +30,12 @@ module.exports = function (app, model) {
 
     app.delete('/api/assignment/admin/user/:id', deleteUser);
 
-    app.post  ('/api/assignment/register',       register);
+    app.post ('/api/assignment/register',       register);
 
     app.post('/api/assignment/logout',         logout);
 
 
-    app.get   ('/api/assignment/loggedin',       loggedin);
+    app.get('/api/assignment/loggedin',       loggedin);
 
     /*
     app.post('/api/assignment/login', passport.authenticate('local'), login);
@@ -99,6 +97,7 @@ module.exports = function (app, model) {
 
     function register(req, res) {
         var newUser = req.body;
+        newUser.password = bcrypt.hashSync(req.body.password);
         newUser.roles = ['admin'];
 
         model

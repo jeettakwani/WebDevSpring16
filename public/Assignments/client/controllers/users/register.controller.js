@@ -27,6 +27,7 @@
             $scope.dispalert = false;
             $rootScope.user.username = $scope.username;
             $rootScope.user.password = $scope.password;
+            $rootScope.user.type = "assignment";
             $rootScope.user.email = $scope.email;
 
             UserService.register($rootScope.user).then(
