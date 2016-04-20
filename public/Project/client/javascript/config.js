@@ -90,28 +90,28 @@
                     templateUrl: "views/users/following.view.html",
                     controller: "FollowerController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/friendProfile/:following_firstname", {
                     templateUrl: "views/users/friendProfile.view.html",
                     controller: "FollowerController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/friendReviews/:following_firstname", {
                     templateUrl: "views/users/friendReviews.view.html",
                     controller: "FollowerController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/searchUsers", {
                     templateUrl: "views/search/searchUsers.view.html",
                     controller: "SearchController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/canRent", {
@@ -122,55 +122,55 @@
                     templateUrl: "views/rent/addGamesForRentForms.view.html",
                     controller: "RentController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/addGamesForRentForms/:_id", {
                     templateUrl: "views/rent/addGamesForRentForms.view.html",
                     controller: "RentController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/gameRented", {
                     templateUrl: "views/rent/gamesRented.view.html",
                     controller: "RentController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/rentGames", {
                     templateUrl: "views/rent/rentGames.view.html",
                     controller: "RentController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/rentGames/:gameName", {
                     templateUrl: "views/rent/rentGames.view.html",
                     controller: "RentController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/basket/:id", {
                     templateUrl: "views/checkout/basket.view.html",
                     controller: "CheckoutController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/success", {
                     templateUrl: "views/checkout/success.view.html",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when("/reviews", {
                     templateUrl: "views/users/reviews.view.html",
                     controller: "ReviewsController",
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .otherwise({
