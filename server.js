@@ -8,9 +8,9 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 
 
-//var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://127.0.0.1:27017/webDevSp16';
+var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://127.0.0.1:27017/webDevSp16';
 
-var connectionString = 'mongodb://127.0.0.1:27017/webDevSp16';
+/*var connectionString = 'mongodb://127.0.0.1:27017/webDevSp16';
 
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string =
@@ -19,7 +19,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
         process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
         process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
         process.env.OPENSHIFT_APP_NAME;
-}
+}*/
 
 var db = mongoose.connect(connectionString);
 
