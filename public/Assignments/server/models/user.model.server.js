@@ -2,8 +2,6 @@
  * Created by jtakwani on 3/6/16.
  */
 
-var users = require("./user.mock.json");
-
 var q = require('q');
 
 module.exports = function (db, mongoose) {

@@ -5,18 +5,18 @@
 module.exports = function (app, db, mongoose) {
     //var http = require('http');
     
-    var proj_userModel = require("../public/project/server/models/user.model.server.js")(db, mongoose);
+    var proj_userModel = require("../public/Project/server/models/user.model.server.js")(db, mongoose);
     var userModel = require("../public/Assignments/server/models/user.model.server.js")(db, mongoose);
-    var proj_userService = require("../public/project/server/services/user.service.server.js")(app, proj_userModel,userModel);
+    var proj_userService = require("../public/Project/server/services/user.service.server.js")(app, proj_userModel,userModel);
     
-    var gameModel = require("../public/project/server/models/game.model.server.js")(db, mongoose);
-    var gameService = require("../public/project/server/services/game.service.server.js")(app, gameModel, proj_userModel);
+    var gameModel = require("../public/Project/server/models/game.model.server.js")(db, mongoose);
+    var gameService = require("../public/Project/server/services/game.service.server.js")(app, gameModel, proj_userModel);
     
-    var rentModel = require("../public/project/server/models/rent.model.server.js")(db,mongoose);
-    var rentService = require("../public/project/server/services/rent.service.server.js")(app, rentModel);
+    var rentModel = require("../public/Project/server/models/rent.model.server.js")(db,mongoose);
+    var rentService = require("../public/Project/server/services/rent.service.server.js")(app, rentModel);
 
-    var reviewModel = require("../public/project/server/models/review.model.server.js")(db,mongoose);
-    var reviewService = require("../public/project/server/services/review.service.server.js")(app,reviewModel);
+    var reviewModel = require("../public/Project/server/models/review.model.server.js")(db,mongoose);
+    var reviewService = require("../public/Project/server/services/review.service.server.js")(app,reviewModel);
 
     //assignment//
 
